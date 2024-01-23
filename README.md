@@ -1,0 +1,2 @@
+# palpites-oscar
+ 

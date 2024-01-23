@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+:root {
+  --primary: #212529;
+  --secondary: #2d3339;
+  --terciary: #363d45;
+}
+
+* {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.single-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 34rem;
+}
+
+.main-title {
+  display: flex;
+}
+
+.oscar-statue {
+  background: url("../images/oscar-512.png") center center no-repeat;
+  background-size: contain;
+  width: 165px;
+}
+
+.main-title h1 {
+  font-weight: bolder;
+  font-size: 4rem;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 125px;
+  margin-bottom: 40px;
+  box-shadow: -4px 9px 0px 0px #161616;
+}
+
+.play-btn:active {
+  box-shadow: none;
+}

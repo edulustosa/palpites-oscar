@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palpites Oscar</title>
+    <link
+      rel="shortcut icon"
+      href="../../client/assets/images/oscar-24.png"
+      type="image/x-icon"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,200;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <link rel="stylesheet" href="../../client/assets/css/style.css" />
+  </head>
+
+  <body class="single-page">
+    <main class="main-content">
+      <div class="main-title">
+        <div class="oscar-statue"></div>
+        <h1>
+          Palpites <br />
+          Oscar
+        </h1>
+        <div class="oscar-statue"></div>
+      </div>
+
+      <div class="description">
+        <p class="d-inline-flex gap-1">
+          <a
+            class="btn d-inline-flex align-items-center"
+            data-bs-toggle="collapse"
+            href="#how-it-works"
+            role="button"
+            aria-expanded="false"
+            aria-controls="how-it-works"
+          >
+            Como funciona?
+            <span class="material-symbols-outlined drop-down">
+              arrow_drop_down
+            </span>
+          </a>
+        </p>
+
+        <div class="collapse" id="how-it-works">
+          <div class="card card-body">
+            Primeiro, você faz suas apostas para os vencedores do Oscar. Em
+            seguida, crie ou entre em uma sala onde você e seus amigos poderão
+            acompanhar os resultados em tempo real. Compartilhe o convite da
+            sala com seus amigos para que eles também participem. Durante a
+            cerimônia do Oscar, o site atualizará automaticamente os resultados,
+            permitindo que você veja quem acertou mais previsões.
+          </div>
+        </div>
+      </div>
+
+      <a href="/rooms" class="btn btn-primary play-btn">Jogar</a>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../../client/index.js"></script>
+  </body>
+</html>
