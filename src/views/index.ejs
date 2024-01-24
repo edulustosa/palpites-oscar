@@ -1,0 +1,44 @@
+<%- include("includes/head") %>
+  <body>
+    <main class="main-content">
+      <div class="main-title d-flex">
+        <div class="oscar-statue"></div>
+        <h1>
+          Palpites <br />
+          Oscar
+        </h1>
+        <div class="oscar-statue"></div>
+      </div>
+
+      <div class="description">
+        <p class="d-inline-flex gap-1">
+          <a
+            class="btn d-inline-flex align-items-center details-btn"
+            data-bs-toggle="collapse"
+            href="#details"
+            role="button"
+            aria-expanded="false"
+            aria-controls="details"
+          >
+            Como funciona?
+            <span class="material-symbols-outlined arrow">
+              arrow_drop_down
+            </span>
+          </a>
+        </p>
+
+        <div class="collapse" id="details">
+          <div class="card card-body">
+            Primeiro, você faz suas apostas para os vencedores do Oscar. Em
+            seguida, crie ou entre em uma sala onde você e seus amigos poderão
+            acompanhar os resultados em tempo real. Compartilhe o convite da
+            sala com seus amigos para que eles também participem. Durante a
+            cerimônia do Oscar, o site atualizará automaticamente os resultados,
+            permitindo que você veja quem acertou mais previsões.
+          </div>
+        </div>
+      </div>
+
+      <a href="/rooms" class="btn btn-secondary play-btn">Jogar</a>
+    </main>
+<%- include("includes/footer") %>

@@ -1,14 +1,15 @@
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
-// import "./assets/css/style.css";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import "./assets/css/style.css";
 
 (() => {
-  const tutorial = document.querySelector(".description a");
-  tutorial.addEventListener("click", () => {
-    const dropdown = document.querySelector(".drop-down");
+  const detailsBtn = document.querySelector(".details-btn");
 
-    if (tutorial.classList.contains("collapsed")) {
-      dropdown.innerHTML = "arrow_drop_down";
-    } else dropdown.innerHTML = "arrow_drop_up";
+  detailsBtn.addEventListener("click", () => {
+    const arrow = document.querySelector(".arrow");
+
+    if (detailsBtn.classList.contains("collapsed")) {
+      arrow.innerHTML = "arrow_drop_down";
+    } else arrow.innerHTML = "arrow_drop_up";
   });
 })();
