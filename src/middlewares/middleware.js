@@ -1,12 +1,18 @@
-function global(req, res, next) {
-  res.locals.error = req.flash("error");
-  res.locals.sucess = req.flash("sucess");
-  res.locals.user = 
-}
+function global(req, res, next) {}
 
 function loginRequired(req, res, next) {
-  if (!req.session.user) req.session.save(() => res.redirect("/register"));
+  if (!req.session.user) res.redirect("/register");
   else next();
 }
 
-module.exports = { loginRequired };
+function csrf(req, res, next) {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+}
+
+function checkCsrfError(err, req, res, next) {
+  if (err) return res.render("404");
+  next();
+}
+
+module.exports = { loginRequired, csrf, checkCsrfError };
