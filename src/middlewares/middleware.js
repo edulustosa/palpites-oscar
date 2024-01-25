@@ -1,7 +1,12 @@
-function global(req, res, next) {}
+function global(req, res, next) {
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("sucess");
+  res.locals.user = req.session.user;
+  next();
+}
 
 function loginRequired(req, res, next) {
-  if (!req.session.user) res.redirect("/register");
+  if (!req.session.user) res.redirect("/cadastro");
   else next();
 }
 
@@ -15,4 +20,4 @@ function checkCsrfError(err, req, res, next) {
   next();
 }
 
-module.exports = { loginRequired, csrf, checkCsrfError };
+module.exports = { global, loginRequired, csrf, checkCsrfError };

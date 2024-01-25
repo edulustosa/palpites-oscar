@@ -39,9 +39,9 @@ import { isEmail } from "validator";
         case "password":
           const passwordLen = input.value.length;
 
-          if (passwordLen < 6 || passwordLen > 20) {
+          if (passwordLen < 8 || passwordLen > 20) {
             validForm = false;
-            setInputErr(input, "Senha precisa ter de 6 a 20 caracteres");
+            setInputErr(input, "Senha precisa ter de 8 a 20 caracteres");
           }
 
           break;

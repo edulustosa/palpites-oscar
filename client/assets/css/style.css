@@ -15,6 +15,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .main-content {
@@ -62,17 +63,32 @@ body {
 .login-layout {
   background-color: var(--secondary);
   border-radius: 15px;
-  width: 25rem;
+  width: 400px;
+}
+
+.oscar-statue-sm {
+  background: url("../images/oscar-512.png") center center no-repeat;
+  background-size: contain;
+  height: 4rem;
+  width: 4rem;
+}
+
+.invalid-feedback {
+  font-size: 12px;
 }
 
 @media only screen and (max-width: 768px) {
   html {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .description,
   .play-btn,
   .details-btn {
     font-size: 14px;
+  }
+
+  .login-layout {
+    width: 80%;
   }
 }

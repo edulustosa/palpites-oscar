@@ -47,9 +47,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             break;
           case "password":
             var passwordLen = input.value.length;
-            if (passwordLen < 6 || passwordLen > 20) {
+            if (passwordLen < 8 || passwordLen > 20) {
               validForm = false;
-              setInputErr(input, "Senha precisa ter de 6 a 20 caracteres");
+              setInputErr(input, "Senha precisa ter de 8 a 20 caracteres");
             }
             break;
           case "confirmation":
@@ -142,6 +142,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .main-content {
@@ -189,12 +190,23 @@ body {
 .login-layout {
   background-color: var(--secondary);
   border-radius: 15px;
-  width: 25rem;
+  width: 400px;
+}
+
+.oscar-statue-sm {
+  background: url(${___CSS_LOADER_URL_REPLACEMENT_0___}) center center no-repeat;
+  background-size: contain;
+  height: 4rem;
+  width: 4rem;
+}
+
+.invalid-feedback {
+  font-size: 12px;
 }
 
 @media only screen and (max-width: 768px) {
   html {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .description,
@@ -202,8 +214,12 @@ body {
   .details-btn {
     font-size: 14px;
   }
+
+  .login-layout {
+    width: 80%;
+  }
 }
-`, "",{"version":3,"sources":["webpack://./client/assets/css/style.css"],"names":[],"mappings":"AAAA,gBAAgB;;AAEhB;EACE,kBAAkB;EAClB,oBAAoB;EACpB,mBAAmB;AACrB;;AAEA;EACE,kCAAkC;AACpC;;AAEA;EACE,aAAa;EACb,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,YAAY;AACd;;AAEA;EACE,2EAAkE;EAClE,wBAAwB;EACxB,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,YAAY;EACZ,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,kCAAkC;EAClC,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE;IACE,eAAe;EACjB;;EAEA;;;IAGE,eAAe;EACjB;AACF","sourcesContent":["@charset \"UTF-8\";\r\n\r\n:root {\r\n  --primary: #212529;\r\n  --secondary: #2d3339;\r\n  --terciary: #363d45;\r\n}\r\n\r\n* {\r\n  font-family: \"Poppins\", sans-serif;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.main-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 50px;\r\n  width: 34rem;\r\n}\r\n\r\n.oscar-statue {\r\n  background: url(\"../images/oscar-512.png\") center center no-repeat;\r\n  background-size: contain;\r\n  width: 10rem;\r\n}\r\n\r\n.main-title h1 {\r\n  font-weight: bolder;\r\n  font-size: 4rem;\r\n}\r\n\r\n.description {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n}\r\n\r\n.play-btn {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 45px;\r\n  width: 125px;\r\n  box-shadow: -4px 9px 0px 0px #161616;\r\n}\r\n\r\n.play-btn:active {\r\n  box-shadow: none;\r\n}\r\n\r\n.details-btn:active {\r\n  border: none;\r\n}\r\n\r\n.login-layout {\r\n  background-color: var(--secondary);\r\n  border-radius: 15px;\r\n  width: 25rem;\r\n}\r\n\r\n@media only screen and (max-width: 768px) {\r\n  html {\r\n    font-size: 12px;\r\n  }\r\n\r\n  .description,\r\n  .play-btn,\r\n  .details-btn {\r\n    font-size: 14px;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./client/assets/css/style.css"],"names":[],"mappings":"AAAA,gBAAgB;;AAEhB;EACE,kBAAkB;EAClB,oBAAoB;EACpB,mBAAmB;AACrB;;AAEA;EACE,kCAAkC;AACpC;;AAEA;EACE,aAAa;EACb,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,YAAY;AACd;;AAEA;EACE,2EAAkE;EAClE,wBAAwB;EACxB,YAAY;AACd;;AAEA;EACE,mBAAmB;EACnB,eAAe;AACjB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,YAAY;EACZ,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,kCAAkC;EAClC,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,2EAAkE;EAClE,wBAAwB;EACxB,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE;IACE,eAAe;EACjB;;EAEA;;;IAGE,eAAe;EACjB;;EAEA;IACE,UAAU;EACZ;AACF","sourcesContent":["@charset \"UTF-8\";\r\n\r\n:root {\r\n  --primary: #212529;\r\n  --secondary: #2d3339;\r\n  --terciary: #363d45;\r\n}\r\n\r\n* {\r\n  font-family: \"Poppins\", sans-serif;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n}\r\n\r\n.main-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 50px;\r\n  width: 34rem;\r\n}\r\n\r\n.oscar-statue {\r\n  background: url(\"../images/oscar-512.png\") center center no-repeat;\r\n  background-size: contain;\r\n  width: 10rem;\r\n}\r\n\r\n.main-title h1 {\r\n  font-weight: bolder;\r\n  font-size: 4rem;\r\n}\r\n\r\n.description {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n}\r\n\r\n.play-btn {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 45px;\r\n  width: 125px;\r\n  box-shadow: -4px 9px 0px 0px #161616;\r\n}\r\n\r\n.play-btn:active {\r\n  box-shadow: none;\r\n}\r\n\r\n.details-btn:active {\r\n  border: none;\r\n}\r\n\r\n.login-layout {\r\n  background-color: var(--secondary);\r\n  border-radius: 15px;\r\n  width: 400px;\r\n}\r\n\r\n.oscar-statue-sm {\r\n  background: url(\"../images/oscar-512.png\") center center no-repeat;\r\n  background-size: contain;\r\n  height: 4rem;\r\n  width: 4rem;\r\n}\r\n\r\n.invalid-feedback {\r\n  font-size: 12px;\r\n}\r\n\r\n@media only screen and (max-width: 768px) {\r\n  html {\r\n    font-size: 10px;\r\n  }\r\n\r\n  .description,\r\n  .play-btn,\r\n  .details-btn {\r\n    font-size: 14px;\r\n  }\r\n\r\n  .login-layout {\r\n    width: 80%;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -6,21 +6,10 @@
   <div class="oscar-statue-sm"></div>
 
   <main class="login-layout p-3">
-    <h1 class="text-center fw-bold fs-3 mb-3">Cadastre-se</h1>
+    <h1 class="text-center fw-bold fs-3 mb-3">Entre</h1>
 
-    <form action="/cadastro" method="POST" class="login-form">
+    <form action="/login" method="POST" class="login-form">
       <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-
-      <div class="mb-3">
-        <label for="username" class="form-label">Nome de Usuário</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          name="username"
-          autocomplete="off"
-        />
-      </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
@@ -37,15 +26,10 @@
         />
       </div>
 
-      <div class="mb-3">
-        <label for="confirmation" class="form-label">Repita a senha</label>
-        <input type="password" class="form-control" id="confirmation" />
-      </div>
-
       <div class="d-flex justify-items-center align-items-center gap-2">
-        <button type="submit" class="btn btn-primary">Criar</button>
+        <button type="submit" class="btn btn-primary">Entrar</button>
         <small class="text-body-secondary"
-          >Já possui uma conta? Faça login <a href="/login">aqui</a></small
+          >Não possui uma conta? Crie uma <a href="/cadastro">aqui</a></small
         >
       </div>
     </form>
