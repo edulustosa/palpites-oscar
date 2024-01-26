@@ -1,6 +1,6 @@
 import { isEmail } from "validator";
 
-(() => {
+try {
   const form = document.querySelector(".login-form");
   const inputs = form.querySelectorAll("input");
 
@@ -89,4 +89,6 @@ import { isEmail } from "validator";
   }
 
   clearInputErr();
-})();
+} catch (e) {
+  console.error(e);
+}

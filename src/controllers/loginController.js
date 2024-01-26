@@ -1,7 +1,8 @@
 const User = require("../models/UserModel");
 
 function loginRender(req, res) {
-  res.render("login");
+  if (req.session.user) res.redirect("/salas");
+  else res.render("login");
 }
 
 async function login(req, res) {
@@ -11,7 +12,7 @@ async function login(req, res) {
 
     if (user.data) {
       req.session.user = user.data;
-      return req.session.save(() => res.redirect("/rooms"));
+      return req.session.save(() => res.redirect("/salas"));
     } else {
       req.flash("error", user.error);
       return req.session.save(() => res.redirect("back"));
@@ -23,6 +24,9 @@ async function login(req, res) {
   }
 }
 
-function logout(req, res) {}
+function logout(req, res) {
+  req.session.destroy();
+  res.redirect("/");
+}
 
 module.exports = { loginRender, login, logout };

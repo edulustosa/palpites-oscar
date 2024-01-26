@@ -1,8 +1,8 @@
 const User = require("../models/UserModel");
 
 function registerRender(req, res) {
-  // if (req.session.user) res.redirect("/rooms");
-  res.render("register");
+  if (req.session.user) res.redirect("/salas");
+  else res.render("register");
 }
 
 async function register(req, res) {
@@ -14,7 +14,7 @@ async function register(req, res) {
       req.session.user = user.data;
 
       req.flash("sucess", "Usuário criado");
-      return req.session.save(() => res.redirect("/rooms"));
+      return req.session.save(() => res.redirect("/salas"));
     } else {
       req.flash("error", user.error);
       return req.session.save(() => res.redirect("back"));

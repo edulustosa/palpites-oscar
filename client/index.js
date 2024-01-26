@@ -3,8 +3,9 @@ import "regenerator-runtime/runtime";
 import "./assets/css/style.css";
 
 import "./assets/modules/form";
+import "./assets/modules/predictions";
 
-(() => {
+try {
   const detailsBtn = document.querySelector(".details-btn");
 
   detailsBtn.addEventListener("click", () => {
@@ -14,4 +15,6 @@ import "./assets/modules/form";
       arrow.innerHTML = "arrow_drop_down";
     } else arrow.innerHTML = "arrow_drop_up";
   });
-})();
+} catch (e) {
+  console.error(e);
+}

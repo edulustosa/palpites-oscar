@@ -10,6 +10,11 @@ function loginRequired(req, res, next) {
   else next();
 }
 
+function predictionsRequired(req, res, next) {
+  if (!req.session.user.predictions) res.redirect("/previsoes");
+  else next();
+}
+
 function csrf(req, res, next) {
   res.locals.csrfToken = req.csrfToken();
   next();
@@ -20,4 +25,10 @@ function checkCsrfError(err, req, res, next) {
   next();
 }
 
-module.exports = { global, loginRequired, csrf, checkCsrfError };
+module.exports = {
+  global,
+  loginRequired,
+  predictionsRequired,
+  csrf,
+  checkCsrfError,
+};

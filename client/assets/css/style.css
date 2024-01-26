@@ -77,6 +77,11 @@ body {
   font-size: 12px;
 }
 
+.predictions {
+  height: 100%;
+  display: block;
+}
+
 @media only screen and (max-width: 768px) {
   html {
     font-size: 10px;
@@ -84,7 +89,8 @@ body {
 
   .description,
   .play-btn,
-  .details-btn {
+  .details-btn,
+  .predictions {
     font-size: 14px;
   }
 
