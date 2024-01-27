@@ -8,7 +8,7 @@ const {
   registerRender,
   register,
 } = require("./src/controllers/registerController");
-const { loginRender, login } = require("./src/controllers/loginController");
+const { loginRender, login, logout } = require("./src/controllers/loginController");
 
 const routes = Router();
 
@@ -20,7 +20,10 @@ routes.post("/cadastro", register);
 routes.get("/login", loginRender);
 routes.post("/login", login);
 
+routes.get("/logout", logout);
+
 routes.get("/previsoes", loginRequired, (req, res) => res.render("predictions"));
+routes.post("/previsoes", loginRequired, (req, res) => console.log(req.body));
 
 routes.get("/salas", loginRequired, predictionsRequired, (req, res) =>
   res.render("rooms")

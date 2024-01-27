@@ -2,8 +2,8 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "./assets/css/style.css";
 
-import "./assets/modules/form";
-import "./assets/modules/predictions";
+import "./assets/js/form";
+import "./assets/js/predictions";
 
 try {
   const detailsBtn = document.querySelector(".details-btn");

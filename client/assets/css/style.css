@@ -82,6 +82,15 @@ body {
   display: block;
 }
 
+.oscar-img {
+  height: 15rem;
+}
+
+.fixed-alert {
+  position: fixed;
+  right: 2%;
+}
+
 @media only screen and (max-width: 768px) {
   html {
     font-size: 10px;
@@ -96,5 +105,9 @@ body {
 
   .login-layout {
     width: 80%;
+  }
+
+  .oscar-img {
+    height: 23rem;
   }
 }

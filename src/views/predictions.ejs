@@ -1,6 +1,8 @@
 <%- include("includes/head") %>
 
 <body class="predictions p-4">
+  <div class="fixed-alert"></div>
+
   <main>
     <div class="mb-5">
       <h1 class="fw-bold">Faça suas previsões</h1>
@@ -10,14 +12,1090 @@
       >
     </div>
 
-    <form>
-      <h2 class="fs-3 mb-4">Melhor Ator</h2>
-      <div class="row">
+    <form action="/previsoes" method="POST" class="predictions-form">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+      <div class="row mb-4">
         <div class="col">
+          <h2 class="fs-3 mb-4">Melhor documentário curta</h2>
           <label class="d-inline-flex gap-1 align-items-center mb-2"
             ><input
               type="radio"
-              name="Melhor Ator"
+              name="Melhor documentário curta"
+              value="The ABCs of Book Banning"
+              class="movie"
+            />The ABCs of Book Banning</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário curta"
+              value="The Barber of Little Rock"
+              class="movie"
+            />The Barber of Little Rock</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário curta"
+              value="Island In Between"
+              class="movie"
+            />Island In Between</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário curta"
+              value="The Last Repair Shop"
+              class="movie"
+            />The Last Repair Shop</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário curta"
+              value="Nǎi Nai and Wài Pó"
+              class="movie"
+            />Nǎi Nai and Wài Pó</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor curta animado</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta animado"
+              value="Letter to a Pig"
+              class="movie"
+            />Letter to a Pig</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta animado"
+              value="Ninety-Five Senses"
+              class="movie"
+            />Ninety-Five Senses</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta animado"
+              value="Our Uniform"
+              class="movie"
+            />Our Uniform</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta animado"
+              value="Pachyderme"
+              class="movie"
+            />Pachyderme</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta animado"
+              value="War Is Over! Inspired by the Music of John & Yoko"
+              class="movie"
+            />War Is Over! Inspired by the Music of John & Yoko</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor curta</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta"
+              value="The After"
+              class="movie"
+            />The After</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta"
+              value="Invincible"
+              class="movie"
+            />Invincible</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta"
+              value="Knight of Fortune"
+              class="movie"
+            />Knight of Fortune</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta"
+              value="Red, White and Blue"
+              class="movie"
+            />Red, White and Blue</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor curta"
+              value="The Wonderful Story of Henry Sugar"
+              class="movie"
+            />The Wonderful Story of Henry Sugar</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhores efeitos visuais</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhores efeitos visuais"
+              value="Resistência"
+              class="movie"
+            />Resistência</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhores efeitos visuais"
+              value="Godzilla Minus One"
+              class="movie"
+            />Godzilla Minus One</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhores efeitos visuais"
+              value="Guardiões da Galáxia Vol. 3"
+              class="movie"
+            />Guardiões da Galáxia Vol. 3</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhores efeitos visuais"
+              value="Missão: Impossível - Acerto de Contas Parte Um"
+              class="movie"
+            />Missão: Impossível - Acerto de Contas Parte Um</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhores efeitos visuais"
+              value="Napoleão"
+              class="movie"
+            />Napoleão</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor fotografia</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor fotografia"
+              value="O Conde"
+              class="movie"
+            />O Conde</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor fotografia"
+              value="Assassinos da Lua das Flores"
+              class="movie"
+            />Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor fotografia"
+              value="Maestro"
+              class="movie"
+            />Maestro</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor fotografia"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor fotografia"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor edição</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor edição"
+              value="Anatomia de Uma Queda"
+              class="movie"
+            />Anatomia de Uma Queda</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor edição"
+              value="Os Rejeitados"
+              class="movie"
+            />Os Rejeitados</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor edição"
+              value="Assassinos da Lua das Flores"
+              class="movie"
+            />Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor edição"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor edição"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor som</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor som"
+              value="Resistência"
+              class="movie"
+            />Resistência</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor som"
+              value="Maestro"
+              class="movie"
+            />Maestro</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor som"
+              value="Missão: Impossível - Acerto de Contas Parte Um"
+              class="movie"
+            />Missão: Impossível - Acerto de Contas Parte Um</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor som"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor som"
+              value="Zona de Interesse"
+              class="movie"
+            />Zona de Interesse</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor design de produção</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de produção"
+              value="Barbie"
+              class="movie"
+            />Barbie</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de produção"
+              value="Assassinos da Lua das Flores"
+              class="movie"
+            />Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de produção"
+              value="Napoleão"
+              class="movie"
+            />Napoleão</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de produção"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de produção"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor maquiagem e penteados</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor maquiagem e penteados"
+              value="Golda - A Mulher de Uma Nação"
+              class="movie"
+            />Golda - A Mulher de Uma Nação</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor maquiagem e penteados"
+              value="Maestro"
+              class="movie"
+            />Maestro</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor maquiagem e penteados"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor maquiagem e penteados"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor maquiagem e penteados"
+              value="A Sociedade da Neve"
+              class="movie"
+            />A Sociedade da Neve</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor design de figurino</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de figurino"
+              value="Barbie"
+              class="movie"
+            />Barbie</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de figurino"
+              value="Assassinos da Lua das Flores"
+              class="movie"
+            />Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de figurino"
+              value="Napoleão"
+              class="movie"
+            />Napoleão</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de figurino"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor design de figurino"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor documentário</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário"
+              value="Bobi Wine: The People's President"
+              class="movie"
+            />Bobi Wine: The People's President</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário"
+              value="A Memória Infinita"
+              class="movie"
+            />A Memória Infinita</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário"
+              value="As 4 Filhas de Olfa"
+              class="movie"
+            />As 4 Filhas de Olfa</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário"
+              value="To Kill a Tiger"
+              class="movie"
+            />To Kill a Tiger</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor documentário"
+              value="20 Days in Mariupol"
+              class="movie"
+            />20 Days in Mariupol</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor animação</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor animação"
+              value="O Menino e a Garça"
+              class="movie"
+            />O Menino e a Garça</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor animação"
+              value="Elementos"
+              class="movie"
+            />Elementos</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor animação"
+              value="Nimona"
+              class="movie"
+            />Nimona</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor animação"
+              value="Meu Amigo Robô"
+              class="movie"
+            />Meu Amigo Robô</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor animação"
+              value="Homem-Aranha: Através do Aranhaverso"
+              class="movie"
+            />Homem-Aranha: Através do Aranhaverso</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor filme internacional</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme internacional"
+              value="Io Capitano"
+              class="movie"
+            />Io Capitano</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme internacional"
+              value="Perfect Days"
+              class="movie"
+            />Perfect Days</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme internacional"
+              value="A Sociedade da Neve"
+              class="movie"
+            />A Sociedade da Neve</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme internacional"
+              value="Das Lehrerzimmer"
+              class="movie"
+            />Das Lehrerzimmer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme internacional"
+              value="Zona de Interesse"
+              class="movie"
+            />Zona de Interesse</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor trilha original</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor trilha original"
+              value="American Fiction"
+              class="movie"
+            />American Fiction</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor trilha original"
+              value="Indiana Jones e a Relíquia do Destino"
+              class="movie"
+            />Indiana Jones e a Relíquia do Destino</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor trilha original"
+              value="Assassinos da Lua das Flores"
+              class="movie"
+            />Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor trilha original"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor trilha original"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor canção original</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor canção original"
+              value="The Fire Inside - Flamin' Hot - O Sabor que Mudou a História"
+            />The Fire Inside - Flamin' Hot - O Sabor que Mudou a
+            História</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor canção original"
+              value="I’m Just Ken - Barbie"
+            />I’m Just Ken - Barbie</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor canção original"
+              value="It Never Went Away - American Symphony"
+            />It Never Went Away - American Symphony</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor canção original"
+              value="Wahzhazhe (A Song For My People) - Assassinos da Lua das Flores"
+            />Wahzhazhe (A Song For My People) - Assassinos da Lua das
+            Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor canção original"
+              value="What Was I Made For? - Barbie"
+            />What Was I Made For? - Barbie</label
+          >
+          <br />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor roteiro adaptado</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro adaptado"
+              value="American Fiction"
+              class="movie"
+            />American Fiction - Cord Jefferson</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro adaptado"
+              value="Barbie"
+              class="movie"
+            />Barbie - Greta Gerwig, Noah Baumbach</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro adaptado"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer - Christopher Nolan</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro adaptado"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas - Tony McNamara</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro adaptado"
+              value="Zona de Interesse"
+              class="movie"
+            />Zona de Interesse - Jonathan Glazer</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor roteiro original</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro original"
+              value="Anatomia de Uma Queda"
+              class="movie"
+            />Anatomia de Uma Queda— Justin Triet, Arthur Harari</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro original"
+              value="Os Rejeitados"
+              class="movie"
+            />Os Rejeitados — David Hemingson</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro original"
+              value="Maestro"
+              class="movie"
+            />Maestro — Bradley Cooper, Josh Singer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro original"
+              value="Segredos de um Escândalo"
+              class="movie"
+            />Segredos de um Escândalo — Samy Burch, Alex Mechanik</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor roteiro original"
+              value="Vidas Passadas"
+              class="movie"
+            />Vidas Passadas — Celine Song</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor atriz coadjuvante</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz coadjuvante"
+              value="Emily Blunt"
+              class="actor"
+            />Emily Blunt - Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz coadjuvante"
+              value="Danielle Brooks"
+              class="actor"
+            />Danielle Brooks - A Cor Púrpura</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz coadjuvante"
+              value="America Ferrera"
+              class="actor"
+            />America Ferrera - Barbie</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz coadjuvante"
+              value="Jodie Foster"
+              class="actor"
+            />Jodie Foster - Nyad</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz coadjuvante"
+              value="Da’Vine Joy Randolph"
+              class="actor"
+            />Da’Vine Joy Randolph - Os Rejeitados</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor ator coadjuvante</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor ator coadjuvante"
+              value="Sterling K Brown"
+              class="actor"
+            />Sterling K Brown - American Fiction</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor ator coadjuvante"
+              value="Robert De Niro"
+              class="actor"
+            />Robert De Niro - Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor ator coadjuvante"
+              value="Robert Downey Jr."
+              class="actor"
+            />Robert Downey Jr. - Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor ator coadjuvante"
+              value="Ryan Gosling"
+              class="actor"
+            />Ryan Gosling - Barbie</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor ator coadjuvante"
+              value="Mark Ruffalo"
+              class="actor"
+            />Mark Ruffalo - Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor atriz</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz"
+              value="Annette Bening"
+              class="actor"
+            />Annette Bening - Nyad</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz"
+              value="Lily Gladstone"
+              class="actor"
+            />Lily Gladstone - Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz"
+              value="Sandra Hüller"
+              class="actor"
+            />Sandra Hüller - Anatomia de Uma Queda</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz"
+              value="Carey Mulligan"
+              class="actor"
+            />Carey Mulligan - Maestro</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor atriz"
+              value="Emma Stone"
+              class="actor"
+            />Emma Stone - Pobres Criaturas</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor ator</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor ator"
               value="Bradley Cooper"
               class="actor"
             />Bradley Cooper - Maestro</label
@@ -26,7 +1104,7 @@
           <label class="d-inline-flex gap-1 align-items-center mb-2"
             ><input
               type="radio"
-              name="Melhor Ator"
+              name="Melhor ator"
               value="Colman Domingo"
               class="actor"
             />Colman Domingo - Rustin</label
@@ -35,7 +1113,7 @@
           <label class="d-inline-flex gap-1 align-items-center mb-2"
             ><input
               type="radio"
-              name="Melhor Ator"
+              name="Melhor ator"
               value="Paul Giamatti"
               class="actor"
             />Paul Giamatti - Os Rejeitados</label
@@ -44,7 +1122,7 @@
           <label class="d-inline-flex gap-1 align-items-center mb-2"
             ><input
               type="radio"
-              name="Melhor Ator"
+              name="Melhor ator"
               value="Cillian Murphy"
               class="actor"
             />Cillian Murphy - Oppenheimer</label
@@ -53,7 +1131,7 @@
           <label class="d-inline-flex gap-1 align-items-center mb-2"
             ><input
               type="radio"
-              name="Melhor Ator"
+              name="Melhor ator"
               value="Jeffrey Wright"
               class="actor"
             />Jeffrey Wright - American Fiction</label
@@ -61,11 +1139,165 @@
           <br />
         </div>
         <div class="col">
-          <img src="" alt="" />
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
         </div>
       </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor diretor</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor diretor"
+              value="Justine Triet"
+              class="actor"
+            />Justine Triet - Anatomia de Uma Queda</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor diretor"
+              value="Martin Scorsese"
+              class="actor"
+            />Martin Scorsese - Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor diretor"
+              value="Christopher Nolan"
+              class="actor"
+            />Christopher Nolan - Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor diretor"
+              value="Yorgos Lanthimos"
+              class="actor"
+            />Yorgos Lanthimos - Pobres Criaturas</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor diretor"
+              value="Jonathan Glazer"
+              class="actor"
+            />Jonathan Glazer - Zona de Interesse</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <h2 class="fs-3 mb-4">Melhor filme</h2>
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="American Fiction"
+              class="movie"
+            />American Fiction</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Anatomia de Uma Queda"
+              class="movie"
+            />Anatomia de Uma Queda</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Barbie"
+              class="movie"
+            />Barbie</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Os Rejeitados"
+              class="movie"
+            />Os Rejeitados</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Assassinos da Lua das Flores"
+              class="movie"
+            />Assassinos da Lua das Flores</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Maestro"
+              class="movie"
+            />Maestro</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Oppenheimer"
+              class="movie"
+            />Oppenheimer</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Vidas Passadas"
+              class="movie"
+            />Vidas Passadas</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Pobres Criaturas"
+              class="movie"
+            />Pobres Criaturas</label
+          >
+          <br />
+          <label class="d-inline-flex gap-1 align-items-center mb-2"
+            ><input
+              type="radio"
+              name="Melhor filme"
+              value="Zona de Interesse"
+              class="movie"
+            />Zona de Interesse</label
+          >
+          <br />
+        </div>
+        <div class="col">
+          <img src="" alt="" class="img-thumbnail rounded oscar-img" />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
     </form>
   </main>
 
-  <%- include("includes/footer") %>
-</body>
+<%- include("includes/footer") %>
