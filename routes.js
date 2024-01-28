@@ -9,6 +9,8 @@ const {
   register,
 } = require("./src/controllers/registerController");
 const { loginRender, login, logout } = require("./src/controllers/loginController");
+const predictions = require("./src/controllers/predictionsController");
+const sendUserPredictions = require("./src/apis/predictionsAPI");
 
 const routes = Router();
 
@@ -22,8 +24,9 @@ routes.post("/login", login);
 
 routes.get("/logout", logout);
 
-routes.get("/previsoes", loginRequired, (req, res) => res.render("predictions"));
-routes.post("/previsoes", loginRequired, (req, res) => console.log(req.body));
+routes.get("/previsoes", loginRequired, predictions.render);
+routes.get("/api/predictions", loginRequired, sendUserPredictions);
+routes.post("/previsoes", loginRequired, predictions.set);
 
 routes.get("/salas", loginRequired, predictionsRequired, (req, res) =>
   res.render("rooms")

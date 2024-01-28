@@ -1,7 +1,11 @@
+import axios from "axios";
 import { getActorsImgs, getMoviesImgs } from "../modules/oscarimg";
 
 try {
   (async () => {
+    const predictions = (await axios.get("/api/predictions")).data;
+    console.log(predictions);
+
     const actors = await getActorsImgs();
     const movies = await getMoviesImgs();
 
@@ -17,6 +21,15 @@ try {
       }
     });
   })();
+
+  function setImg(input, url) {
+    const div = input.closest("div");
+    const imgDiv = div.nextElementSibling;
+    const img = imgDiv.querySelector("img");
+
+    img.src = url;
+    img.alt = input.value;
+  }
 
   const form = document.querySelector(".predictions-form");
 
@@ -54,15 +67,6 @@ try {
     }
 
     return true;
-  }
-
-  function setImg(input, url) {
-    const div = input.closest("div");
-    const imgDiv = div.nextElementSibling;
-    const img = imgDiv.querySelector("img");
-
-    img.src = url;
-    img.alt = input.value;
   }
 } catch (e) {
   console.error(e);

@@ -1,11 +1,13 @@
 <% if (error.length >= 1) { %>
-  <div class="constainer-fluid alert alert-danger my-3" role="alert">
+  <div class="constainer-fluid alert alert-danger alert-dismissible my-3" role="alert">
     <%= error[0] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% } %>
 
 <% if (success.length >= 1) { %>
-  <div class="constainer-fluid alert alert-success my-3" role="alert">
+  <div class="constainer-fluid alert alert-success alert-dismissible my-3" role="alert">
     <%= success[0] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% } %>

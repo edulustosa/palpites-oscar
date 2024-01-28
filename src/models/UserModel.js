@@ -85,6 +85,20 @@ class User {
     const user = await UserModel.findOne({ email });
     return !!user;
   }
+
+  static async predictions(id, predictions) {
+    if (Object.keys(predictions).length !== 23) return null; 
+
+    const user = await UserModel.findByIdAndUpdate(
+      id,
+      {
+        $set: { predictions },
+      },
+      { new: true }
+    );
+
+    return user;
+  }
 }
 
 module.exports = User;
