@@ -91,6 +91,15 @@ body {
   right: 2%;
 }
 
+.rooms-container {
+  background-color: var(--secondary);
+  height: 25rem;
+  width: 45rem;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media only screen and (max-width: 768px) {
   html {
     font-size: 10px;

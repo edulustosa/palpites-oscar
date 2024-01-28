@@ -13,7 +13,7 @@ async function register(req, res) {
       await user.save();
       req.session.user = user.data;
 
-      req.flash("sucess", "Usuário criado");
+      req.flash("success", "Usuário criado");
       return req.session.save(() => res.redirect("/salas"));
     } else {
       req.flash("error", user.error);

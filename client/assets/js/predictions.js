@@ -1,24 +1,53 @@
 import axios from "axios";
-import { getActorsImgs, getMoviesImgs } from "../modules/oscarimg";
+import { getOscarImgs } from "../modules/oscarimg";
 
 try {
   (async () => {
     const predictions = (await axios.get("/api/predictions")).data;
-    console.log(predictions);
 
-    const actors = await getActorsImgs();
-    const movies = await getMoviesImgs();
+    if (predictions) {
+      const oscarImgs = await getOscarImgs(Object.values(predictions));
+      const nominess = document.querySelectorAll(".nominee");
 
-    document.addEventListener("click", (e) => {
-      const tag = e.target;
+      for (let nominee of nominess) {
+        if (predictions[nominee.name] === nominee.value) {
+          if (!nominee.classList.contains("song")) {
+            setImg(nominee, oscarImgs[nominee.value]);
+          }
+          nominee.checked = true;
+        } else {
+          nominee.disabled = true;
+          nominee.classList.add("disabled");
+        }
+      }
+    } else {
+      const predictionsInput = document.querySelectorAll(".nominee");
+      const nominees = [];
 
-      if (tag.classList.contains("actor")) {
-        setImg(tag, actors[tag.value]);
+      for (let nominated of predictionsInput) {
+        if (
+          !nominated.classList.contains("song") &&
+          !nominees.includes(nominated.value)
+        ) {
+          nominees.push(nominated.value);
+        }
       }
 
-      if (tag.classList.contains("movie")) {
-        setImg(tag, movies[tag.value]);
-      }
+      const oscarImgs = await getOscarImgs(nominees);
+      console.log(oscarImgs);
+
+      document.addEventListener("click", (e) => {
+        const tag = e.target;
+
+        if (tag.classList.contains("nominee")) {
+          setImg(tag, oscarImgs[tag.value]);
+        }
+      });
+    }
+
+    const form = document.querySelector(".predictions-form");
+    form.addEventListener("submit", (e) => {
+      if (!validatePredictionsForm() || predictions) e.preventDefault();
     });
   })();
 
@@ -31,16 +60,8 @@ try {
     img.alt = input.value;
   }
 
-  const form = document.querySelector(".predictions-form");
-
-  form.addEventListener("submit", (e) => {
-    if (!validatePredictionsForm()) {
-      e.preventDefault();
-    }
-  });
-
   function validatePredictionsForm() {
-    const nominees = form.querySelectorAll('input[type="radio"]');
+    const nominees = document.querySelectorAll('input[type="radio"]');
     const selectedGroups = {};
 
     nominees.forEach((nominated) => {

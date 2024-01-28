@@ -3,15 +3,23 @@
 <body class="predictions p-4">
   <div class="fixed-alert"></div>
 
+  <% if (predictions) { %>
+    <%- include("includes/nav") %>
+  <% } %>
+
   <%- include("includes/flash") %>
 
   <main>
     <div class="mb-5">
-      <h1 class="fw-bold">Faça suas previsões</h1>
-      <small
-        ><strong>Atenção!</strong> Essa votação valerá para todas as salas e
-        será feita apenas uma vez</small
-      >
+      <% if (predictions) { %>
+        <h1 class="fw-bold">Suas previsões</h1>
+      <% } else { %>
+        <h1 class="fw-bold">Faça suas previsões</h1>
+        <small
+          ><strong>Atenção!</strong> Essa votação valerá para todas as salas e
+          será feita apenas uma vez</small
+        >
+      <% } %>
     </div>
 
     <form action="/previsoes" method="POST" class="predictions-form">
@@ -25,7 +33,7 @@
               type="radio"
               name="Melhor documentário curta"
               value="The ABCs of Book Banning"
-              class="movie"
+              class="nominee"
             />The ABCs of Book Banning</label
           >
           <br />
@@ -34,7 +42,7 @@
               type="radio"
               name="Melhor documentário curta"
               value="The Barber of Little Rock"
-              class="movie"
+              class="nominee"
             />The Barber of Little Rock</label
           >
           <br />
@@ -43,7 +51,7 @@
               type="radio"
               name="Melhor documentário curta"
               value="Island In Between"
-              class="movie"
+              class="nominee"
             />Island In Between</label
           >
           <br />
@@ -52,7 +60,7 @@
               type="radio"
               name="Melhor documentário curta"
               value="The Last Repair Shop"
-              class="movie"
+              class="nominee"
             />The Last Repair Shop</label
           >
           <br />
@@ -61,7 +69,7 @@
               type="radio"
               name="Melhor documentário curta"
               value="Nǎi Nai and Wài Pó"
-              class="movie"
+              class="nominee"
             />Nǎi Nai and Wài Pó</label
           >
           <br />
@@ -79,7 +87,7 @@
               type="radio"
               name="Melhor curta animado"
               value="Letter to a Pig"
-              class="movie"
+              class="nominee"
             />Letter to a Pig</label
           >
           <br />
@@ -88,7 +96,7 @@
               type="radio"
               name="Melhor curta animado"
               value="Ninety-Five Senses"
-              class="movie"
+              class="nominee"
             />Ninety-Five Senses</label
           >
           <br />
@@ -97,7 +105,7 @@
               type="radio"
               name="Melhor curta animado"
               value="Our Uniform"
-              class="movie"
+              class="nominee"
             />Our Uniform</label
           >
           <br />
@@ -106,7 +114,7 @@
               type="radio"
               name="Melhor curta animado"
               value="Pachyderme"
-              class="movie"
+              class="nominee"
             />Pachyderme</label
           >
           <br />
@@ -115,7 +123,7 @@
               type="radio"
               name="Melhor curta animado"
               value="War Is Over! Inspired by the Music of John & Yoko"
-              class="movie"
+              class="nominee"
             />War Is Over! Inspired by the Music of John & Yoko</label
           >
           <br />
@@ -133,7 +141,7 @@
               type="radio"
               name="Melhor curta"
               value="The After"
-              class="movie"
+              class="nominee"
             />The After</label
           >
           <br />
@@ -142,7 +150,7 @@
               type="radio"
               name="Melhor curta"
               value="Invincible"
-              class="movie"
+              class="nominee"
             />Invincible</label
           >
           <br />
@@ -151,7 +159,7 @@
               type="radio"
               name="Melhor curta"
               value="Knight of Fortune"
-              class="movie"
+              class="nominee"
             />Knight of Fortune</label
           >
           <br />
@@ -160,7 +168,7 @@
               type="radio"
               name="Melhor curta"
               value="Red, White and Blue"
-              class="movie"
+              class="nominee"
             />Red, White and Blue</label
           >
           <br />
@@ -169,7 +177,7 @@
               type="radio"
               name="Melhor curta"
               value="The Wonderful Story of Henry Sugar"
-              class="movie"
+              class="nominee"
             />The Wonderful Story of Henry Sugar</label
           >
           <br />
@@ -187,7 +195,7 @@
               type="radio"
               name="Melhores efeitos visuais"
               value="Resistência"
-              class="movie"
+              class="nominee"
             />Resistência</label
           >
           <br />
@@ -196,7 +204,7 @@
               type="radio"
               name="Melhores efeitos visuais"
               value="Godzilla Minus One"
-              class="movie"
+              class="nominee"
             />Godzilla Minus One</label
           >
           <br />
@@ -205,7 +213,7 @@
               type="radio"
               name="Melhores efeitos visuais"
               value="Guardiões da Galáxia Vol. 3"
-              class="movie"
+              class="nominee"
             />Guardiões da Galáxia Vol. 3</label
           >
           <br />
@@ -214,7 +222,7 @@
               type="radio"
               name="Melhores efeitos visuais"
               value="Missão: Impossível - Acerto de Contas Parte Um"
-              class="movie"
+              class="nominee"
             />Missão: Impossível - Acerto de Contas Parte Um</label
           >
           <br />
@@ -223,7 +231,7 @@
               type="radio"
               name="Melhores efeitos visuais"
               value="Napoleão"
-              class="movie"
+              class="nominee"
             />Napoleão</label
           >
           <br />
@@ -241,7 +249,7 @@
               type="radio"
               name="Melhor fotografia"
               value="O Conde"
-              class="movie"
+              class="nominee"
             />O Conde</label
           >
           <br />
@@ -250,7 +258,7 @@
               type="radio"
               name="Melhor fotografia"
               value="Assassinos da Lua das Flores"
-              class="movie"
+              class="nominee"
             />Assassinos da Lua das Flores</label
           >
           <br />
@@ -259,7 +267,7 @@
               type="radio"
               name="Melhor fotografia"
               value="Maestro"
-              class="movie"
+              class="nominee"
             />Maestro</label
           >
           <br />
@@ -268,7 +276,7 @@
               type="radio"
               name="Melhor fotografia"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -277,7 +285,7 @@
               type="radio"
               name="Melhor fotografia"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -295,7 +303,7 @@
               type="radio"
               name="Melhor edição"
               value="Anatomia de Uma Queda"
-              class="movie"
+              class="nominee"
             />Anatomia de Uma Queda</label
           >
           <br />
@@ -304,7 +312,7 @@
               type="radio"
               name="Melhor edição"
               value="Os Rejeitados"
-              class="movie"
+              class="nominee"
             />Os Rejeitados</label
           >
           <br />
@@ -313,7 +321,7 @@
               type="radio"
               name="Melhor edição"
               value="Assassinos da Lua das Flores"
-              class="movie"
+              class="nominee"
             />Assassinos da Lua das Flores</label
           >
           <br />
@@ -322,7 +330,7 @@
               type="radio"
               name="Melhor edição"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -331,7 +339,7 @@
               type="radio"
               name="Melhor edição"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -349,7 +357,7 @@
               type="radio"
               name="Melhor som"
               value="Resistência"
-              class="movie"
+              class="nominee"
             />Resistência</label
           >
           <br />
@@ -358,7 +366,7 @@
               type="radio"
               name="Melhor som"
               value="Maestro"
-              class="movie"
+              class="nominee"
             />Maestro</label
           >
           <br />
@@ -367,7 +375,7 @@
               type="radio"
               name="Melhor som"
               value="Missão: Impossível - Acerto de Contas Parte Um"
-              class="movie"
+              class="nominee"
             />Missão: Impossível - Acerto de Contas Parte Um</label
           >
           <br />
@@ -376,7 +384,7 @@
               type="radio"
               name="Melhor som"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -385,7 +393,7 @@
               type="radio"
               name="Melhor som"
               value="Zona de Interesse"
-              class="movie"
+              class="nominee"
             />Zona de Interesse</label
           >
           <br />
@@ -403,7 +411,7 @@
               type="radio"
               name="Melhor design de produção"
               value="Barbie"
-              class="movie"
+              class="nominee"
             />Barbie</label
           >
           <br />
@@ -412,7 +420,7 @@
               type="radio"
               name="Melhor design de produção"
               value="Assassinos da Lua das Flores"
-              class="movie"
+              class="nominee"
             />Assassinos da Lua das Flores</label
           >
           <br />
@@ -421,7 +429,7 @@
               type="radio"
               name="Melhor design de produção"
               value="Napoleão"
-              class="movie"
+              class="nominee"
             />Napoleão</label
           >
           <br />
@@ -430,7 +438,7 @@
               type="radio"
               name="Melhor design de produção"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -439,7 +447,7 @@
               type="radio"
               name="Melhor design de produção"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -457,7 +465,7 @@
               type="radio"
               name="Melhor maquiagem e penteados"
               value="Golda - A Mulher de Uma Nação"
-              class="movie"
+              class="nominee"
             />Golda - A Mulher de Uma Nação</label
           >
           <br />
@@ -466,7 +474,7 @@
               type="radio"
               name="Melhor maquiagem e penteados"
               value="Maestro"
-              class="movie"
+              class="nominee"
             />Maestro</label
           >
           <br />
@@ -475,7 +483,7 @@
               type="radio"
               name="Melhor maquiagem e penteados"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -484,7 +492,7 @@
               type="radio"
               name="Melhor maquiagem e penteados"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -493,7 +501,7 @@
               type="radio"
               name="Melhor maquiagem e penteados"
               value="A Sociedade da Neve"
-              class="movie"
+              class="nominee"
             />A Sociedade da Neve</label
           >
           <br />
@@ -511,7 +519,7 @@
               type="radio"
               name="Melhor design de figurino"
               value="Barbie"
-              class="movie"
+              class="nominee"
             />Barbie</label
           >
           <br />
@@ -520,7 +528,7 @@
               type="radio"
               name="Melhor design de figurino"
               value="Assassinos da Lua das Flores"
-              class="movie"
+              class="nominee"
             />Assassinos da Lua das Flores</label
           >
           <br />
@@ -529,7 +537,7 @@
               type="radio"
               name="Melhor design de figurino"
               value="Napoleão"
-              class="movie"
+              class="nominee"
             />Napoleão</label
           >
           <br />
@@ -538,7 +546,7 @@
               type="radio"
               name="Melhor design de figurino"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -547,7 +555,7 @@
               type="radio"
               name="Melhor design de figurino"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -565,7 +573,7 @@
               type="radio"
               name="Melhor documentário"
               value="Bobi Wine: The People's President"
-              class="movie"
+              class="nominee"
             />Bobi Wine: The People's President</label
           >
           <br />
@@ -574,7 +582,7 @@
               type="radio"
               name="Melhor documentário"
               value="A Memória Infinita"
-              class="movie"
+              class="nominee"
             />A Memória Infinita</label
           >
           <br />
@@ -583,7 +591,7 @@
               type="radio"
               name="Melhor documentário"
               value="As 4 Filhas de Olfa"
-              class="movie"
+              class="nominee"
             />As 4 Filhas de Olfa</label
           >
           <br />
@@ -592,7 +600,7 @@
               type="radio"
               name="Melhor documentário"
               value="To Kill a Tiger"
-              class="movie"
+              class="nominee"
             />To Kill a Tiger</label
           >
           <br />
@@ -601,7 +609,7 @@
               type="radio"
               name="Melhor documentário"
               value="20 Days in Mariupol"
-              class="movie"
+              class="nominee"
             />20 Days in Mariupol</label
           >
           <br />
@@ -619,7 +627,7 @@
               type="radio"
               name="Melhor animação"
               value="O Menino e a Garça"
-              class="movie"
+              class="nominee"
             />O Menino e a Garça</label
           >
           <br />
@@ -628,7 +636,7 @@
               type="radio"
               name="Melhor animação"
               value="Elementos"
-              class="movie"
+              class="nominee"
             />Elementos</label
           >
           <br />
@@ -637,7 +645,7 @@
               type="radio"
               name="Melhor animação"
               value="Nimona"
-              class="movie"
+              class="nominee"
             />Nimona</label
           >
           <br />
@@ -646,7 +654,7 @@
               type="radio"
               name="Melhor animação"
               value="Meu Amigo Robô"
-              class="movie"
+              class="nominee"
             />Meu Amigo Robô</label
           >
           <br />
@@ -655,7 +663,7 @@
               type="radio"
               name="Melhor animação"
               value="Homem-Aranha: Através do Aranhaverso"
-              class="movie"
+              class="nominee"
             />Homem-Aranha: Através do Aranhaverso</label
           >
           <br />
@@ -673,7 +681,7 @@
               type="radio"
               name="Melhor filme internacional"
               value="Io Capitano"
-              class="movie"
+              class="nominee"
             />Io Capitano</label
           >
           <br />
@@ -682,7 +690,7 @@
               type="radio"
               name="Melhor filme internacional"
               value="Perfect Days"
-              class="movie"
+              class="nominee"
             />Perfect Days</label
           >
           <br />
@@ -691,7 +699,7 @@
               type="radio"
               name="Melhor filme internacional"
               value="A Sociedade da Neve"
-              class="movie"
+              class="nominee"
             />A Sociedade da Neve</label
           >
           <br />
@@ -700,7 +708,7 @@
               type="radio"
               name="Melhor filme internacional"
               value="Das Lehrerzimmer"
-              class="movie"
+              class="nominee"
             />Das Lehrerzimmer</label
           >
           <br />
@@ -709,7 +717,7 @@
               type="radio"
               name="Melhor filme internacional"
               value="Zona de Interesse"
-              class="movie"
+              class="nominee"
             />Zona de Interesse</label
           >
           <br />
@@ -727,7 +735,7 @@
               type="radio"
               name="Melhor trilha original"
               value="American Fiction"
-              class="movie"
+              class="nominee"
             />American Fiction</label
           >
           <br />
@@ -736,7 +744,7 @@
               type="radio"
               name="Melhor trilha original"
               value="Indiana Jones e a Relíquia do Destino"
-              class="movie"
+              class="nominee"
             />Indiana Jones e a Relíquia do Destino</label
           >
           <br />
@@ -745,7 +753,7 @@
               type="radio"
               name="Melhor trilha original"
               value="Assassinos da Lua das Flores"
-              class="movie"
+              class="nominee"
             />Assassinos da Lua das Flores</label
           >
           <br />
@@ -754,7 +762,7 @@
               type="radio"
               name="Melhor trilha original"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -763,7 +771,7 @@
               type="radio"
               name="Melhor trilha original"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -781,6 +789,7 @@
               type="radio"
               name="Melhor canção original"
               value="The Fire Inside - Flamin' Hot - O Sabor que Mudou a História"
+              class="nominee song "
             />The Fire Inside - Flamin' Hot - O Sabor que Mudou a
             História</label
           >
@@ -790,6 +799,7 @@
               type="radio"
               name="Melhor canção original"
               value="I’m Just Ken - Barbie"
+              class="nominee song"
             />I’m Just Ken - Barbie</label
           >
           <br />
@@ -798,6 +808,7 @@
               type="radio"
               name="Melhor canção original"
               value="It Never Went Away - American Symphony"
+              class="nominee song"
             />It Never Went Away - American Symphony</label
           >
           <br />
@@ -806,6 +817,7 @@
               type="radio"
               name="Melhor canção original"
               value="Wahzhazhe (A Song For My People) - Assassinos da Lua das Flores"
+              class="nominee song"
             />Wahzhazhe (A Song For My People) - Assassinos da Lua das
             Flores</label
           >
@@ -815,6 +827,7 @@
               type="radio"
               name="Melhor canção original"
               value="What Was I Made For? - Barbie"
+              class="nominee song"
             />What Was I Made For? - Barbie</label
           >
           <br />
@@ -829,7 +842,7 @@
               type="radio"
               name="Melhor roteiro adaptado"
               value="American Fiction"
-              class="movie"
+              class="nominee"
             />American Fiction - Cord Jefferson</label
           >
           <br />
@@ -838,7 +851,7 @@
               type="radio"
               name="Melhor roteiro adaptado"
               value="Barbie"
-              class="movie"
+              class="nominee"
             />Barbie - Greta Gerwig, Noah Baumbach</label
           >
           <br />
@@ -847,7 +860,7 @@
               type="radio"
               name="Melhor roteiro adaptado"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer - Christopher Nolan</label
           >
           <br />
@@ -856,7 +869,7 @@
               type="radio"
               name="Melhor roteiro adaptado"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas - Tony McNamara</label
           >
           <br />
@@ -865,7 +878,7 @@
               type="radio"
               name="Melhor roteiro adaptado"
               value="Zona de Interesse"
-              class="movie"
+              class="nominee"
             />Zona de Interesse - Jonathan Glazer</label
           >
           <br />
@@ -883,7 +896,7 @@
               type="radio"
               name="Melhor roteiro original"
               value="Anatomia de Uma Queda"
-              class="movie"
+              class="nominee"
             />Anatomia de Uma Queda— Justin Triet, Arthur Harari</label
           >
           <br />
@@ -892,7 +905,7 @@
               type="radio"
               name="Melhor roteiro original"
               value="Os Rejeitados"
-              class="movie"
+              class="nominee"
             />Os Rejeitados — David Hemingson</label
           >
           <br />
@@ -901,7 +914,7 @@
               type="radio"
               name="Melhor roteiro original"
               value="Maestro"
-              class="movie"
+              class="nominee"
             />Maestro — Bradley Cooper, Josh Singer</label
           >
           <br />
@@ -910,7 +923,7 @@
               type="radio"
               name="Melhor roteiro original"
               value="Segredos de um Escândalo"
-              class="movie"
+              class="nominee"
             />Segredos de um Escândalo — Samy Burch, Alex Mechanik</label
           >
           <br />
@@ -919,7 +932,7 @@
               type="radio"
               name="Melhor roteiro original"
               value="Vidas Passadas"
-              class="movie"
+              class="nominee"
             />Vidas Passadas — Celine Song</label
           >
           <br />
@@ -937,7 +950,7 @@
               type="radio"
               name="Melhor atriz coadjuvante"
               value="Emily Blunt"
-              class="actor"
+              class="nominee"
             />Emily Blunt - Oppenheimer</label
           >
           <br />
@@ -946,7 +959,7 @@
               type="radio"
               name="Melhor atriz coadjuvante"
               value="Danielle Brooks"
-              class="actor"
+              class="nominee"
             />Danielle Brooks - A Cor Púrpura</label
           >
           <br />
@@ -955,7 +968,7 @@
               type="radio"
               name="Melhor atriz coadjuvante"
               value="America Ferrera"
-              class="actor"
+              class="nominee"
             />America Ferrera - Barbie</label
           >
           <br />
@@ -964,7 +977,7 @@
               type="radio"
               name="Melhor atriz coadjuvante"
               value="Jodie Foster"
-              class="actor"
+              class="nominee"
             />Jodie Foster - Nyad</label
           >
           <br />
@@ -973,7 +986,7 @@
               type="radio"
               name="Melhor atriz coadjuvante"
               value="Da’Vine Joy Randolph"
-              class="actor"
+              class="nominee"
             />Da’Vine Joy Randolph - Os Rejeitados</label
           >
           <br />
@@ -991,7 +1004,7 @@
               type="radio"
               name="Melhor ator coadjuvante"
               value="Sterling K Brown"
-              class="actor"
+              class="nominee"
             />Sterling K Brown - American Fiction</label
           >
           <br />
@@ -1000,7 +1013,7 @@
               type="radio"
               name="Melhor ator coadjuvante"
               value="Robert De Niro"
-              class="actor"
+              class="nominee"
             />Robert De Niro - Assassinos da Lua das Flores</label
           >
           <br />
@@ -1009,7 +1022,7 @@
               type="radio"
               name="Melhor ator coadjuvante"
               value="Robert Downey Jr."
-              class="actor"
+              class="nominee"
             />Robert Downey Jr. - Oppenheimer</label
           >
           <br />
@@ -1018,7 +1031,7 @@
               type="radio"
               name="Melhor ator coadjuvante"
               value="Ryan Gosling"
-              class="actor"
+              class="nominee"
             />Ryan Gosling - Barbie</label
           >
           <br />
@@ -1027,7 +1040,7 @@
               type="radio"
               name="Melhor ator coadjuvante"
               value="Mark Ruffalo"
-              class="actor"
+              class="nominee"
             />Mark Ruffalo - Pobres Criaturas</label
           >
           <br />
@@ -1045,7 +1058,7 @@
               type="radio"
               name="Melhor atriz"
               value="Annette Bening"
-              class="actor"
+              class="nominee"
             />Annette Bening - Nyad</label
           >
           <br />
@@ -1054,7 +1067,7 @@
               type="radio"
               name="Melhor atriz"
               value="Lily Gladstone"
-              class="actor"
+              class="nominee"
             />Lily Gladstone - Assassinos da Lua das Flores</label
           >
           <br />
@@ -1063,7 +1076,7 @@
               type="radio"
               name="Melhor atriz"
               value="Sandra Hüller"
-              class="actor"
+              class="nominee"
             />Sandra Hüller - Anatomia de Uma Queda</label
           >
           <br />
@@ -1072,7 +1085,7 @@
               type="radio"
               name="Melhor atriz"
               value="Carey Mulligan"
-              class="actor"
+              class="nominee"
             />Carey Mulligan - Maestro</label
           >
           <br />
@@ -1081,7 +1094,7 @@
               type="radio"
               name="Melhor atriz"
               value="Emma Stone"
-              class="actor"
+              class="nominee"
             />Emma Stone - Pobres Criaturas</label
           >
           <br />
@@ -1099,7 +1112,7 @@
               type="radio"
               name="Melhor ator"
               value="Bradley Cooper"
-              class="actor"
+              class="nominee"
             />Bradley Cooper - Maestro</label
           >
           <br />
@@ -1108,7 +1121,7 @@
               type="radio"
               name="Melhor ator"
               value="Colman Domingo"
-              class="actor"
+              class="nominee"
             />Colman Domingo - Rustin</label
           >
           <br />
@@ -1117,7 +1130,7 @@
               type="radio"
               name="Melhor ator"
               value="Paul Giamatti"
-              class="actor"
+              class="nominee"
             />Paul Giamatti - Os Rejeitados</label
           >
           <br />
@@ -1126,7 +1139,7 @@
               type="radio"
               name="Melhor ator"
               value="Cillian Murphy"
-              class="actor"
+              class="nominee"
             />Cillian Murphy - Oppenheimer</label
           >
           <br />
@@ -1135,7 +1148,7 @@
               type="radio"
               name="Melhor ator"
               value="Jeffrey Wright"
-              class="actor"
+              class="nominee"
             />Jeffrey Wright - American Fiction</label
           >
           <br />
@@ -1153,7 +1166,7 @@
               type="radio"
               name="Melhor diretor"
               value="Justine Triet"
-              class="actor"
+              class="nominee"
             />Justine Triet - Anatomia de Uma Queda</label
           >
           <br />
@@ -1162,7 +1175,7 @@
               type="radio"
               name="Melhor diretor"
               value="Martin Scorsese"
-              class="actor"
+              class="nominee"
             />Martin Scorsese - Assassinos da Lua das Flores</label
           >
           <br />
@@ -1171,7 +1184,7 @@
               type="radio"
               name="Melhor diretor"
               value="Christopher Nolan"
-              class="actor"
+              class="nominee"
             />Christopher Nolan - Oppenheimer</label
           >
           <br />
@@ -1180,7 +1193,7 @@
               type="radio"
               name="Melhor diretor"
               value="Yorgos Lanthimos"
-              class="actor"
+              class="nominee"
             />Yorgos Lanthimos - Pobres Criaturas</label
           >
           <br />
@@ -1189,7 +1202,7 @@
               type="radio"
               name="Melhor diretor"
               value="Jonathan Glazer"
-              class="actor"
+              class="nominee"
             />Jonathan Glazer - Zona de Interesse</label
           >
           <br />
@@ -1207,7 +1220,7 @@
               type="radio"
               name="Melhor filme"
               value="American Fiction"
-              class="movie"
+              class="nominee"
             />American Fiction</label
           >
           <br />
@@ -1216,7 +1229,7 @@
               type="radio"
               name="Melhor filme"
               value="Anatomia de Uma Queda"
-              class="movie"
+              class="nominee"
             />Anatomia de Uma Queda</label
           >
           <br />
@@ -1225,7 +1238,7 @@
               type="radio"
               name="Melhor filme"
               value="Barbie"
-              class="movie"
+              class="nominee"
             />Barbie</label
           >
           <br />
@@ -1234,7 +1247,7 @@
               type="radio"
               name="Melhor filme"
               value="Os Rejeitados"
-              class="movie"
+              class="nominee"
             />Os Rejeitados</label
           >
           <br />
@@ -1243,7 +1256,7 @@
               type="radio"
               name="Melhor filme"
               value="Assassinos da Lua das Flores"
-              class="movie"
+              class="nominee"
             />Assassinos da Lua das Flores</label
           >
           <br />
@@ -1252,7 +1265,7 @@
               type="radio"
               name="Melhor filme"
               value="Maestro"
-              class="movie"
+              class="nominee"
             />Maestro</label
           >
           <br />
@@ -1261,7 +1274,7 @@
               type="radio"
               name="Melhor filme"
               value="Oppenheimer"
-              class="movie"
+              class="nominee"
             />Oppenheimer</label
           >
           <br />
@@ -1270,7 +1283,7 @@
               type="radio"
               name="Melhor filme"
               value="Vidas Passadas"
-              class="movie"
+              class="nominee"
             />Vidas Passadas</label
           >
           <br />
@@ -1279,7 +1292,7 @@
               type="radio"
               name="Melhor filme"
               value="Pobres Criaturas"
-              class="movie"
+              class="nominee"
             />Pobres Criaturas</label
           >
           <br />
@@ -1288,7 +1301,7 @@
               type="radio"
               name="Melhor filme"
               value="Zona de Interesse"
-              class="movie"
+              class="nominee"
             />Zona de Interesse</label
           >
           <br />
@@ -1298,7 +1311,9 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+      <% if (!predictions) { %>
+        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+      <% } %>
     </form>
   </main>
 

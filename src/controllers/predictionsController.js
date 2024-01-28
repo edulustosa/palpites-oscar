@@ -5,7 +5,7 @@ function render(req, res) {
 
   predictions
     ? res.render("predictions", { predictions })
-    : res.render("predictions");
+    : res.render("predictions", { predictions: false });
 }
 
 async function set(req, res) {
