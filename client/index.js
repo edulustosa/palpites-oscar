@@ -4,6 +4,7 @@ import "./assets/css/style.css";
 
 import "./assets/js/form";
 import "./assets/js/predictions";
+import "./assets/js/rooms";
 
 try {
   const detailsBtn = document.querySelector(".details-btn");

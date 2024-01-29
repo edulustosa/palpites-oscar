@@ -1,4 +1,5 @@
 import { isEmail } from "validator";
+import { setInputErr, removeInputErr } from "../modules/error";
 
 try {
   const form = document.querySelector(".login-form");
@@ -60,23 +61,6 @@ try {
 
     if (!validForm) e.preventDefault();
   });
-
-  function setInputErr(input, msg) {
-    const errMsg = document.createElement("p");
-    errMsg.classList.add("invalid-feedback");
-    errMsg.innerText = msg;
-
-    input.classList.add("is-invalid");
-    input.insertAdjacentElement("afterend", errMsg);
-  }
-
-  function removeInputErr(input) {
-    if (input.classList.contains("is-invalid")) {
-      input.classList.remove("is-invalid");
-      const errMsg = input.nextElementSibling;
-      errMsg.remove();
-    }
-  }
 
   function resetErrors() {
     inputs.forEach((input) => removeInputErr(input));

@@ -98,6 +98,24 @@ body {
   border-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+
+.room-arrow {
+  font-size: 16px;
+}
+
+.ovf {
+  height: 230px;
+  overflow-y: auto;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.nav-underline {
+  font-size: small;
 }
 
 @media only screen and (max-width: 768px) {

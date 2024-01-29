@@ -2,7 +2,6 @@ function global(req, res, next) {
   res.locals.error = req.flash("error");
   res.locals.success = req.flash("sucess");
   res.locals.user = req.session.user;
-  console.log(req.session.user);
   next();
 }
 

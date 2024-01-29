@@ -2,10 +2,7 @@ const User = require("../models/UserModel");
 
 function render(req, res) {
   const predictions = req.session.user.predictions;
-
-  predictions
-    ? res.render("predictions", { predictions })
-    : res.render("predictions", { predictions: false });
+  res.render("predictions", { predictions });
 }
 
 async function set(req, res) {

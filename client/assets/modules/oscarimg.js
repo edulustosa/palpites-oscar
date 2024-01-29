@@ -9,35 +9,29 @@ const options = {
   },
 };
 
-export async function getOscarImgs(nominees) {
-  const oscarImgs = {};
-  for (let nominee of nominees) {
-    if (!oscarImgs[nominee]) {
-      oscarImgs[nominee] = await getOscarImgUrl(nominee);
-    }
-  }
-
-  return oscarImgs;
-}
-
-async function getOscarImgUrl(nominee) {
-  let url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
-    nominee
+export async function getMovieImg(movie) {
+  const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
+    movie
   )}&include_adult=true&language=pt-BR&primary_release_year=2023&page=1`;
 
   try {
     const response = await axios.get(url, options);
     return `https://image.tmdb.org/t/p/original/${response.data.results[0].poster_path}`;
   } catch (err) {
-    try {
-      url = `https://api.themoviedb.org/3/search/person?query=${encodeURIComponent(
-        nominee
-      )}&include_adult=true&language=en-US&page=1`;
-
-      const response = await axios.get(url, options);
-      return `https://image.tmdb.org/t/p/original/${response.data.results[0].profile_path}`;
-    } catch (err) {
-      console.error(err);
-    }
+    console.error(err);
   }
 }
+
+export async function getActorImg(actor) {
+  const url = `https://api.themoviedb.org/3/search/person?query=${encodeURIComponent(
+    actor
+  )}&include_adult=true&language=en-US&page=1`;
+
+  try {
+    const response = await axios.get(url, options);
+    return `https://image.tmdb.org/t/p/original/${response.data.results[0].profile_path}`;
+  } catch (err) {
+    console.error(err);
+  }
+}
+

@@ -3,22 +3,112 @@
 <body>
   <%- include("includes/nav") %> <%- include("includes/flash") %>
 
+  <div class="oscar-statue-sm"></div>
   <main class="rooms-container">
     <section>
-      <form action="/rooms/create" method="POST">
+      <form action="/salas/criar" method="POST" class="create-room">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
         <div class="mb-3">
-          <label for="username" class="form-label">Nome de Usuário</label>
+          <label for="room-name" class="form-label fw-bold fs-5"
+            >Criar sala</label
+          >
           <input
             type="text"
             class="form-control"
-            id="username"
-            name="username"
-            autocomplete="off"
+            id="room-name"
+            name="room-name"
+            placeholder="Nome da sala"
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Criar</button>
+        <button type="submit" class="btn btn-primary btn-large">Criar</button>
+      </form>
+    </section>
+
+    <section>
+      <h1 class="fw-bold fs-4">Salas</h1>
+
+      <ul class="nav nav-underline mb-3">
+        <li class="nav-item">
+          <a class="nav-link participating-rooms-tab active">Participando</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link admin-rooms-tab">Suas</a>
+        </li>
+      </ul>
+
+      <div class="ovf mb-1">
+        <ul class="list-group participating-rooms">
+          <li
+            class="list-group-item d-flex align-items-center justify-content-between gap-2"
+          >
+            <small class="mr-2">Quem sabe mais?</small>
+            <div class="d-flex gap-1">
+              <a
+                role="button"
+                href="/salas/id:"
+                class="btn btn-secondary btn-sm d-grid place-items-center"
+                ><span class="material-symbols-outlined room-arrow">
+                  arrow_right_alt
+                </span></a
+              >
+            </div>
+          </li>
+        </ul>
+
+        <ul class="list-group admin-rooms d-none">
+          <li
+            class="list-group-item d-flex align-items-center justify-content-between gap-2"
+          >
+            <small class="mr-2">Quem sabe mais?</small>
+            <div class="d-flex gap-1">
+              <button
+                role="button"
+                class="btn btn-dark btn-sm d-grid place-items-center"
+              >
+                <span class="material-symbols-outlined room-arrow">
+                  content_copy
+                  <!-- done -->
+                </span>
+              </button>
+
+              <a
+                role="button"
+                href="/salas/id:"
+                class="btn btn-secondary btn-sm d-grid place-items-center"
+                ><span class="material-symbols-outlined room-arrow">
+                  arrow_right_alt
+                </span></a
+              >
+
+              <a
+                role="button"
+                href="/salas/excluir/id:"
+                class="btn btn-danger btn-sm d-grid place-items-center"
+                ><span class="material-symbols-outlined room-arrow">
+                  delete_forever
+                </span></a
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="enter-room">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+        <div class="d-flex gap-2">
+          <input
+            type="url"
+            class="form-control"
+            id="room-url"
+            name="room-url"
+            placeholder="URL da sala"
+          />
+          <button type="submit" class="btn btn-primary btn-sm">Entrar</button>
+        </div>
       </form>
     </section>
   </main>

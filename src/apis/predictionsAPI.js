@@ -1,6 +1,6 @@
 function sendUserPredictions(req, res) {
   const predictions = req.session.user.predictions;
-  predictions ? res.json(predictions) : res.json(null);
+  res.json(predictions);
 }
 
 module.exports = sendUserPredictions;

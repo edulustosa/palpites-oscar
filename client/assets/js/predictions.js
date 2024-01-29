@@ -1,54 +1,56 @@
 import axios from "axios";
-import { getOscarImgs } from "../modules/oscarimg";
+import { getActorImg, getMovieImg } from "../modules/oscarimg";
 
 try {
   (async () => {
     const predictions = (await axios.get("/api/predictions")).data;
 
     if (predictions) {
-      const oscarImgs = await getOscarImgs(Object.values(predictions));
-      const nominess = document.querySelectorAll(".nominee");
+      const nominees = document.querySelectorAll('input[type="radio"]');
 
-      for (let nominee of nominess) {
+      for (let nominee of nominees) {
         if (predictions[nominee.name] === nominee.value) {
-          if (!nominee.classList.contains("song")) {
-            setImg(nominee, oscarImgs[nominee.value]);
-          }
           nominee.checked = true;
         } else {
           nominee.disabled = true;
           nominee.classList.add("disabled");
         }
       }
-    } else {
-      const predictionsInput = document.querySelectorAll(".nominee");
-      const nominees = [];
 
-      for (let nominated of predictionsInput) {
-        if (
-          !nominated.classList.contains("song") &&
-          !nominees.includes(nominated.value)
-        ) {
-          nominees.push(nominated.value);
+      for (let nominee of nominees) {
+        if (predictions[nominee.name] === nominee.value) {
+          if (nominee.classList.contains("movie")) {
+            const movieImg = await getMovieImg(nominee.value);
+            setImg(nominee, movieImg);
+          } else if (nominee.classList.contains("actor")) {
+            const actorImg = await getActorImg(nominee.value);
+            setImg(nominee, actorImg);
+          }
         }
       }
-
-      const oscarImgs = await getOscarImgs(nominees);
-      console.log(oscarImgs);
-
+    } else {
       document.addEventListener("click", (e) => {
         const tag = e.target;
 
-        if (tag.classList.contains("nominee")) {
-          setImg(tag, oscarImgs[tag.value]);
+        if (tag.classList.contains("movie")) {
+          getMovieImg(tag.value)
+            .then((movieImg) => setImg(tag, movieImg))
+            .catch((err) => console.error(err));
+        }
+
+        if (tag.classList.contains("actor")) {
+          getActorImg(tag.value)
+            .then((actorImg) => setImg(tag, actorImg))
+            .catch((err) => console.error(err));
         }
       });
     }
 
-    const form = document.querySelector(".predictions-form");
-    form.addEventListener("submit", (e) => {
-      if (!validatePredictionsForm() || predictions) e.preventDefault();
-    });
+    document
+      .querySelector(".predictions-form")
+      .addEventListener("submit", (e) => {
+        if (!validatePredictionsForm() || predictions) e.preventDefault();
+      });
   })();
 
   function setImg(input, url) {
