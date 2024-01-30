@@ -6,9 +6,9 @@ function registerRender(req, res) {
 }
 
 async function register(req, res) {
-  try {
-    const user = new User(req.body);
+  const user = new User(req.body);
 
+  try {
     if (await user.validate()){
       await user.save();
       req.session.user = user.data;

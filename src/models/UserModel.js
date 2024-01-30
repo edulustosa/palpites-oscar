@@ -82,12 +82,11 @@ class User {
   }
 
   static async exists(email) {
-    const user = await UserModel.findOne({ email });
-    return !!user;
+    return await UserModel.findOne({ email }); 
   }
 
   static async predictions(id, predictions) {
-    if (Object.keys(predictions).length !== 23) return null; 
+    if (Object.keys(predictions).length !== 23) return null;
 
     const user = await UserModel.findByIdAndUpdate(
       id,
@@ -98,6 +97,22 @@ class User {
     );
 
     return user;
+  }
+
+  static async addRoom(userId, roomId) {
+    return await UserModel.findByIdAndUpdate(
+      userId,
+      { $addToSet: { rooms: roomId } },
+      { new: true }
+    );
+  }
+
+  static async removeRoom(userId, roomId) {
+    return await UserModel.findByIdAndUpdate(
+      userId,
+      { $pull: { rooms: roomId } },
+      { new: true }
+    );
   }
 }
 

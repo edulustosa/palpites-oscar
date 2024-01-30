@@ -260,7 +260,18 @@ try {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_error__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/error */ "./client/assets/modules/error.js");
 
-(function () {
+try {
+  var copyToClipboard = function copyToClipboard(btn) {
+    btn.querySelector("span").innerHTML = "done";
+    var copy = btn.value;
+    var textarea = document.createElement("textarea");
+    textarea.value = copy;
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(textarea.value);
+    document.body.removeChild(textarea);
+  };
   var participatingTab = document.querySelector(".participating-rooms-tab");
   var adminTab = document.querySelector(".admin-rooms-tab");
   var participatingList = document.querySelector(".participating-rooms");
@@ -304,7 +315,25 @@ __webpack_require__.r(__webpack_exports__);
     }
     if (!validForm) e.preventDefault();
   });
-})();
+  document.addEventListener("click", function (e) {
+    var btn = e.target;
+    if (btn.classList.contains("btn-dark")) {
+      copyToClipboard(btn);
+    }
+  });
+  document.querySelector(".enter-room").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var url = document.querySelector("#room-url");
+    (0,_modules_error__WEBPACK_IMPORTED_MODULE_0__.removeInputErr)(url);
+    if (url.value.startsWith("http://localhost:5000")) {
+      window.location.replace(url.value);
+    } else {
+      (0,_modules_error__WEBPACK_IMPORTED_MODULE_0__.setInputErr)(url, "URL inválida");
+    }
+  });
+} catch (err) {
+  console.error(err);
+}
 
 /***/ }),
 
@@ -371,7 +400,7 @@ function _getMovieImg() {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          url = "https://api.themoviedb.org/3/search/movie?query=".concat(encodeURIComponent(movie), "&include_adult=true&language=pt-BR&primary_release_year=2023&page=1");
+          url = "https://api.themoviedb.org/3/search/movie?query=".concat(encodeURIComponent(movie), "&language=pt-BR&primary_release_year=2023&page=1");
           _context.prev = 1;
           _context.next = 4;
           return axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url, options);
@@ -399,7 +428,7 @@ function _getActorImg() {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          url = "https://api.themoviedb.org/3/search/person?query=".concat(encodeURIComponent(actor), "&include_adult=true&language=en-US&page=1");
+          url = "https://api.themoviedb.org/3/search/person?query=".concat(encodeURIComponent(actor), "&language=en-US&page=1");
           _context2.prev = 1;
           _context2.next = 4;
           return axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url, options);

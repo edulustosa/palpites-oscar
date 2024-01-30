@@ -36,5 +36,9 @@ routes.get("/api/predictions", loginRequired, sendUserPredictions);
 routes.post("/previsoes", loginRequired, predictions.set);
 
 routes.get("/salas", loginRequired, predictionsRequired, rooms.render);
+routes.post("/salas/criar", loginRequired, predictionsRequired, rooms.create);
+
+routes.get("/salas/entrar/:id", loginRequired, predictionsRequired, rooms.enter);
+routes.get("/salas/excluir/:id", loginRequired, predictionsRequired, rooms.remove);
 
 module.exports = routes;

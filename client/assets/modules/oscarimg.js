@@ -12,7 +12,7 @@ const options = {
 export async function getMovieImg(movie) {
   const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
     movie
-  )}&include_adult=true&language=pt-BR&primary_release_year=2023&page=1`;
+  )}&language=pt-BR&primary_release_year=2023&page=1`;
 
   try {
     const response = await axios.get(url, options);
@@ -25,7 +25,7 @@ export async function getMovieImg(movie) {
 export async function getActorImg(actor) {
   const url = `https://api.themoviedb.org/3/search/person?query=${encodeURIComponent(
     actor
-  )}&include_adult=true&language=en-US&page=1`;
+  )}&language=en-US&page=1`;
 
   try {
     const response = await axios.get(url, options);

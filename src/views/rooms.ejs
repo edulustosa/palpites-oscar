@@ -19,6 +19,7 @@
             id="room-name"
             name="room-name"
             placeholder="Nome da sala"
+            autocomplete="off"
           />
         </div>
 
@@ -41,58 +42,62 @@
 
       <div class="ovf mb-1">
         <ul class="list-group participating-rooms">
-          <li
-            class="list-group-item d-flex align-items-center justify-content-between gap-2"
-          >
-            <small class="mr-2">Quem sabe mais?</small>
-            <div class="d-flex gap-1">
-              <a
-                role="button"
-                href="/salas/id:"
-                class="btn btn-secondary btn-sm d-grid place-items-center"
-                ><span class="material-symbols-outlined room-arrow">
-                  arrow_right_alt
-                </span></a
-              >
-            </div>
-          </li>
+          <% for (let room of rooms.participating) { %>
+            <li
+              class="list-group-item d-flex align-items-center justify-content-between gap-2"
+            >
+              <small class="mr-2"><%= room.name %></small>
+              <div class="d-flex gap-1">
+                <a
+                  role="button"
+                  href="/salas/entrar/<%= room.id %>"
+                  class="btn btn-secondary btn-sm d-grid place-items-center"
+                  ><span class="material-symbols-outlined room-arrow">
+                    arrow_right_alt
+                  </span></a
+                >
+              </div>
+            </li>
+          <% } %>
         </ul>
 
         <ul class="list-group admin-rooms d-none">
-          <li
-            class="list-group-item d-flex align-items-center justify-content-between gap-2"
-          >
-            <small class="mr-2">Quem sabe mais?</small>
-            <div class="d-flex gap-1">
-              <button
-                role="button"
-                class="btn btn-dark btn-sm d-grid place-items-center"
-              >
-                <span class="material-symbols-outlined room-arrow">
-                  content_copy
-                  <!-- done -->
-                </span>
-              </button>
+          <% for (let room of rooms.admin) { %>
+            <li
+              class="list-group-item d-flex align-items-center justify-content-between gap-2"
+            >
+              <small class="mr-2"><%= room.name %></small>
+              <div class="d-flex gap-1">
+                <button
+                  role="button"
+                  class="btn btn-dark btn-sm d-grid place-items-center"
+                  value="http://localhost:5000/salas/entrar/<%= room.id %>"
+                >
+                  <span class="material-symbols-outlined room-arrow">
+                    content_copy
+                  </span>
+                </button>
 
-              <a
-                role="button"
-                href="/salas/id:"
-                class="btn btn-secondary btn-sm d-grid place-items-center"
-                ><span class="material-symbols-outlined room-arrow">
-                  arrow_right_alt
-                </span></a
-              >
+                <a
+                  role="button"
+                  href="/salas/entrar/<%= room.id %>"
+                  class="btn btn-secondary btn-sm d-grid place-items-center"
+                  ><span class="material-symbols-outlined room-arrow">
+                    arrow_right_alt
+                  </span></a
+                >
 
-              <a
-                role="button"
-                href="/salas/excluir/id:"
-                class="btn btn-danger btn-sm d-grid place-items-center"
-                ><span class="material-symbols-outlined room-arrow">
-                  delete_forever
-                </span></a
-              >
-            </div>
-          </li>
+                <a
+                  role="button"
+                  href="/salas/excluir/<%= room.id %>"
+                  class="btn btn-danger btn-sm d-grid place-items-center"
+                  ><span class="material-symbols-outlined room-arrow">
+                    delete_forever
+                  </span></a
+                >
+              </div>
+            </li>
+          <% } %>
         </ul>
       </div>
 
@@ -106,6 +111,7 @@
             id="room-url"
             name="room-url"
             placeholder="URL da sala"
+            autocomplete="off"
           />
           <button type="submit" class="btn btn-primary btn-sm">Entrar</button>
         </div>

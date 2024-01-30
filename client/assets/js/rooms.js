@@ -1,6 +1,6 @@
 import { removeInputErr, setInputErr } from "../modules/error";
 
-(() => {
+try {
   const participatingTab = document.querySelector(".participating-rooms-tab");
   const adminTab = document.querySelector(".admin-rooms-tab");
 
@@ -57,4 +57,44 @@ import { removeInputErr, setInputErr } from "../modules/error";
 
     if (!validForm) e.preventDefault();
   });
-})();
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target;
+
+    if (btn.classList.contains("btn-dark")) {
+      copyToClipboard(btn);
+    }
+  });
+
+  function copyToClipboard(btn) {
+    btn.querySelector("span").innerHTML = "done";
+
+    const copy = btn.value;
+
+    const textarea = document.createElement("textarea");
+    textarea.value = copy;
+    document.body.appendChild(textarea);
+
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(textarea.value);
+
+    document.body.removeChild(textarea);
+  }
+
+  document.querySelector(".enter-room").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const url = document.querySelector("#room-url")
+
+    removeInputErr(url);
+
+    if (url.value.startsWith("http://localhost:5000")) {
+      window.location.replace(url.value);
+    } else {
+      setInputErr(url, "URL inválida");
+    }
+  });
+} catch (err) {
+  console.error(err);
+}
