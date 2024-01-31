@@ -6,8 +6,9 @@ function loginRender(req, res) {
 }
 
 async function login(req, res) {
+  const user = new User(req.body);
+
   try {
-    const user = new User(req.body);
     await user.login();
 
     if (user.data) {
@@ -17,8 +18,8 @@ async function login(req, res) {
       req.flash("error", user.error);
       return req.session.save(() => res.redirect("back"));
     }
-  } catch (e) {
-    console.error(e);
+  } catch (err) {
+    console.error(err);
     req.flash("error", "Não foi possível entrar");
     return req.session.save(() => res.redirect("back"));
   }

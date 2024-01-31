@@ -32,8 +32,16 @@ class Room {
     return await RoomModel.findById(roomId);
   }
 
-  static async exclude(roomId) {
+  static async delete(roomId) {
     return await RoomModel.findOneAndDelete({ _id: roomId });
+  }
+
+  static async addMember(roomId, userId) {
+    return await RoomModel.findByIdAndUpdate(
+      roomId,
+      { $addToSet: { members: userId } },
+      { new: true }
+    );
   }
 }
 

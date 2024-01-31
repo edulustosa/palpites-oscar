@@ -3,13 +3,14 @@ const User = require("../models/UserModel");
 
 async function render(req, res) {
   const roomsIds = req.session.user.rooms;
+  const userId = req.session.user._id;
   const rooms = {
     participating: [],
     admin: [],
   };
 
   try {
-    const user = await User.exists(req.session.user.email);
+    const user = await User.get(userId);
     req.session.user = user;
     req.session.save();
 
@@ -17,7 +18,7 @@ async function render(req, res) {
       const room = await Room.get(roomId);
       rooms.participating.push({ id: room._id, name: room.name });
 
-      if (room.admin.equals(req.session.user._id)) {
+      if (room.admin.equals(userId)) {
         rooms.admin.push({ id: room._id, name: room.name });
       }
     }
@@ -56,28 +57,62 @@ async function create(req, res) {
   }
 }
 
-function enter(req, res) {
-  res.render("room");
+async function enter(req, res) {
+  const roomId = req.params.id;
+  const userId = req.session.user._id;
+  const predictions = {
+    members: {},
+    oscarResult: {},
+  };
+
+  try {
+    let room = await Room.get(roomId);
+
+    if (room) {
+      if (!room.members.includes(userId)) {
+        req.session.room = await Room.addMember(roomId, userId);
+        req.session.user = await User.addRoom(userId, roomId);
+        room = await Room.get(roomId);
+      }
+
+      for (let memberId of room.members) {
+        const member = await User.get(memberId);
+        predictions.members[member.username] = member.predictions;
+      }
+
+      req.session.save();
+    } else {
+      req.flash("error", "Sala não existe");
+      return req.session.save(() => res.redirect("/salas"));
+    }
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Não foi possível entrar na sala");
+    return req.session.save(() => res.redirect("/salas"));
+  }
+
+  res.render("room", { predictions });
 }
 
 async function remove(req, res) {
   const roomId = req.params.id;
+  const userId = req.session.user._id;
 
   try {
     const room = await Room.get(roomId);
-    if (!room.admin.equals(req.session.user._id)) {
+    if (!room.admin.equals(userId)) {
       req.flash("error", "Você não é admin dessa sala");
       return req.session.save(() => res.redirect("back"));
     }
 
-    await User.removeRoom(req.session.user._id, roomId);
+    await User.removeRoom(userId, roomId);
 
     for (let memberId of room.members) {
       await User.removeRoom(memberId, roomId);
     }
 
-    await Room.exclude(roomId);
-    return req.session.save(() => res.redirect("/salas"));
+    await Room.delete(roomId);
+    return req.session.save(() => res.redirect("back"));
   } catch (err) {
     console.error(err);
     req.flash("error", "Não foi possível excluir");

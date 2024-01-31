@@ -82,7 +82,8 @@ class User {
   }
 
   static async exists(email) {
-    return await UserModel.findOne({ email }); 
+    const user = await UserModel.findOne({ email }); 
+    return !!user;
   }
 
   static async predictions(id, predictions) {
@@ -97,6 +98,10 @@ class User {
     );
 
     return user;
+  }
+
+  static async get(userId) {
+    return await UserModel.findById(userId);
   }
 
   static async addRoom(userId, roomId) {
