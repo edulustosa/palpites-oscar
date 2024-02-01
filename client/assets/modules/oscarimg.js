@@ -35,3 +35,24 @@ export async function getActorImg(actor) {
   }
 }
 
+export async function getOscarImg(nominee) {
+  let url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
+    nominee
+  )}&language=pt-BR&primary_release_year=2023&page=1`;
+
+  try {
+    const response = await axios.get(url, options);
+    return `https://image.tmdb.org/t/p/original/${response.data.results[0].poster_path}`;
+  } catch (err) {
+    try {
+      url = `https://api.themoviedb.org/3/search/person?query=${encodeURIComponent(
+        nominee
+      )}&language=en-US&page=1`;
+
+      const response = await axios.get(url, options);
+      return `https://image.tmdb.org/t/p/original/${response.data.results[0].profile_path}`;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}

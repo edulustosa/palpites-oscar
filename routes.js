@@ -15,7 +15,7 @@ const {
 } = require("./src/controllers/loginController");
 
 const predictions = require("./src/controllers/predictionsController");
-const sendUserPredictions = require("./src/apis/predictionsAPI");
+const api = require("./src/apis/api");
 
 const rooms = require("./src/controllers/roomsController");
 
@@ -32,12 +32,14 @@ routes.post("/login", login);
 routes.get("/logout", logout);
 
 routes.get("/previsoes", loginRequired, predictions.render);
-routes.get("/api/predictions", loginRequired, sendUserPredictions);
+routes.get("/api/predictions", loginRequired, api.predictions);
 routes.post("/previsoes", loginRequired, predictions.set);
 
 routes.get("/salas", loginRequired, predictionsRequired, rooms.render);
 routes.post("/salas/criar", loginRequired, predictionsRequired, rooms.create);
-routes.get("/salas/entrar/:id", loginRequired, predictionsRequired, rooms.enter);
 routes.get("/salas/excluir/:id", loginRequired, predictionsRequired, rooms.remove);
+
+routes.get("/api/oscar-result", loginRequired, predictionsRequired, api.oscarResult);
+routes.get("/salas/entrar/:id", loginRequired, predictionsRequired, rooms.enter);
 
 module.exports = routes;

@@ -4,7 +4,89 @@
   <%- include("includes/nav") %> <%- include("includes/flash") %>
 
   <main>
-    teste
-  </main>  
+    <% if (Object.keys(oscarResult).length > 0) { %>
+    <table class="table caption-top mb-5">
+      <caption>
+        Ranking
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Posição</th>
+          <th scope="col">Jogadores</th>
+          <th scope="col">Pontos</th>
+        </tr>
+      </thead>
 
-<%- include("includes/footer") %>
+      <tbody class="ranking">
+        <% Object.keys(membersPredictions).forEach((member, position) => { %>
+        <tr class="position">
+          <th class="place" scope="row">#<%= position + 1 %></th>
+          <td class="player"></td>
+          <td class="points"></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <% for (let category in oscarResult) { %>
+      <img src="" alt="" />
+    <% } %>
+    <% } else { %>
+    <h1 class="fw-bold fs-3">Membros</h1>
+
+    <ul class="list-group">
+      <% for (let member in membersPredictions) { %>
+      <li class="list-group-item"><%= member %></li>
+      <% } %>
+    </ul>
+    <% } %>
+
+    <!-- <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="..." class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="..." />
+        </div>
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="material-symbols-outlined"></span>Eduardo:
+        <strong>Godzilla minus one</strong>
+      </li>
+
+      <li class="list-group-item">
+        <span class="material-symbols-outlined"></span>Izabella:
+        <strong>guardions of the galaxy</strong>
+      </li>
+    </ul> -->
+  </main>
+
+  <%- include("includes/footer") %>
+</body>

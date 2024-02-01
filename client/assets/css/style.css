@@ -110,6 +110,11 @@ body {
   overflow-y: auto;
 }
 
+.ranking {
+  height: 10rem;
+  overflow-y: auto;
+}
+
 .nav-link {
   cursor: pointer;
 }
