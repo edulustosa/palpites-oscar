@@ -110,17 +110,49 @@ body {
   overflow-y: auto;
 }
 
-.ranking {
-  height: 10rem;
-  overflow-y: auto;
-}
-
 .nav-link {
   cursor: pointer;
 }
 
 .nav-underline {
   font-size: small;
+}
+
+.check {
+  background-color: green;
+}
+
+.close {
+  background-color: red;
+}
+
+.rounded-btn {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.prediction {
+  width: 19rem;
+}
+
+.results {
+  width: 20rem;
+}
+
+.ovf-180 {
+  height: 180px;
+  overflow-y: auto;
+}
+
+.nothing {
+  background: url("https://www.pngkey.com/png/full/163-1639407_view-samegoogleiqdbsaucenao-1391950301682-don-t-know-meme-drawing.png")
+    center center no-repeat;
+  background-size: contain;
+  height: 15rem;
+  width: 15rem;
 }
 
 @media only screen and (max-width: 768px) {

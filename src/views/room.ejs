@@ -3,90 +3,87 @@
 <body>
   <%- include("includes/nav") %> <%- include("includes/flash") %>
 
-  <main>
+  <main class="d-flex align-items-center gap-5">
     <% if (Object.keys(oscarResult).length > 0) { %>
-    <table class="table caption-top mb-5">
-      <caption>
-        Ranking
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Posição</th>
-          <th scope="col">Jogadores</th>
-          <th scope="col">Pontos</th>
-        </tr>
-      </thead>
+      <table class="table caption-top">
+        <caption>
+          Ranking
+        </caption>
 
-      <tbody class="ranking">
-        <% Object.keys(membersPredictions).forEach((member, position) => { %>
-        <tr class="position">
-          <th class="place" scope="row">#<%= position + 1 %></th>
-          <td class="player"></td>
-          <td class="points"></td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
+        <thead>
+          <tr>
+            <th scope="col">Posição</th>
+            <th scope="col">Jogadores</th>
+            <th scope="col">Pontos</th>
+          </tr>
+        </thead>
 
-    <% for (let category in oscarResult) { %>
-      <img src="" alt="" />
-    <% } %>
+        <tbody>
+          <% Object.keys(membersPredictions).forEach((member, position) => { %>
+            <tr class="position">
+              <th class="place" scope="row">#<%= position + 1 %></th>
+              <td class="player"></td>
+              <td class="points"></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <section class="d-flex gap-5 results">
+        <button class="btn previous-category">
+          <span class="material-symbols-outlined"> chevron_left </span>
+        </button>
+
+        <% for (let category in oscarResult) { %>
+          <div class="d-flex align-items-center flex-column d-none category">
+            <h2 class="fw-bold fs-3"><%= category %></h2>
+    
+            <img src="" class="img-thumbnail rounded oscar-img mb-3" alt="" />
+    
+            <ul class="list-group mb-3 ovf-180">
+              <% for (let member in membersPredictions) { %>
+                <li
+                  class="list-group-item d-flex align-items-center gap-2 prediction"
+                >
+                  <div>
+                    <% if (oscarResult[category] === membersPredictions[member][category]) { %>
+                      <span class="material-symbols-outlined rounded-btn check">
+                        check
+                      </span>
+                    <% } else { %>
+                      <span class="material-symbols-outlined close rounded-btn">
+                        close
+                      </span>
+                    <% } %>
+                  </div>
+
+                  <span class="player"
+                    ><%= member %>: <strong><%= membersPredictions[member][category] %></strong></span
+                  >
+                </li>
+              <% } %>
+          </div>
+        <% } %>
+
+        <button class="btn next-category">
+          <span class="material-symbols-outlined"> chevron_right </span>
+        </button>
+      </section>
     <% } else { %>
-    <h1 class="fw-bold fs-3">Membros</h1>
-
-    <ul class="list-group">
-      <% for (let member in membersPredictions) { %>
-      <li class="list-group-item"><%= member %></li>
-      <% } %>
-    </ul>
-    <% } %>
-
-    <!-- <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="..." class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="..." />
-        </div>
+      <div>
+        <h1 class="fw-bold fs-3">Membros</h1>
+        <ul class="list-group">
+          <% for (let member in membersPredictions) { %>
+            <li class="list-group-item"><%= member %></li>
+          <% } %>
+        </ul>
       </div>
 
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <ul class="list-group">
-      <li class="list-group-item">
-        <span class="material-symbols-outlined"></span>Eduardo:
-        <strong>Godzilla minus one</strong>
-      </li>
-
-      <li class="list-group-item">
-        <span class="material-symbols-outlined"></span>Izabella:
-        <strong>guardions of the galaxy</strong>
-      </li>
-    </ul> -->
+      <div class="d-flex flex-column align-items-center">
+        <div class="nothing"></div>
+        <p class="lead">A cerimônia ainda não começou</p>
+      </div>
+    <% } %>
   </main>
 
-  <%- include("includes/footer") %>
-</body>
+<%- include("includes/footer") %>

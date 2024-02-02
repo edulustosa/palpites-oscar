@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getOscarImg } from "../modules/oscarimg";
+import { getActorImg, getMovieImg } from "../modules/tmdb";
 
 (async () => {
   try {
@@ -9,7 +9,8 @@ import { getOscarImg } from "../modules/oscarimg";
       const result = getResult(roomData.members, roomData.oscar);
       setRanking(result);
 
-      // await setMovieImgs(roomData.oscar);
+      setCarousel();
+      await setMovieImgs(roomData.oscar);
     }
   } catch (err) {
     console.error(err);
@@ -40,12 +41,69 @@ function setRanking(result) {
   });
 }
 
+function setCarousel() {
+  const categories = document.querySelectorAll(".category");
+  const next = document.querySelector(".next-category");
+  const previous = document.querySelector(".previous-category");
+
+  let currentCategory = categories[categories.length - 1];
+
+  currentCategory.classList.remove("d-none");
+  next.classList.add("d-none");
+
+  if (categories.length === 1) {
+    previous.classList.add("d-none");
+    return;
+  }
+
+  previous.addEventListener("click", () => {
+    currentCategory.classList.add("d-none");
+    currentCategory = currentCategory.previousElementSibling;
+    currentCategory.classList.remove("d-none");
+
+    if (currentCategory === categories[0]) {
+      previous.classList.add("d-none");
+    }
+
+    if (currentCategory !== categories[categories.length - 1]) {
+      if (next.classList.contains("d-none")) {
+        next.classList.remove("d-none");
+      }
+    }
+  });
+
+  next.addEventListener("click", () => {
+    currentCategory.classList.add("d-none");
+    currentCategory = currentCategory.nextElementSibling;
+    currentCategory.classList.remove("d-none");
+
+    if (currentCategory === categories[categories.length - 1]) {
+      next.classList.add("d-none");
+    }
+
+    if (currentCategory !== categories[0]) {
+      if (previous.classList.contains("d-none")) {
+        previous.classList.remove("d-none");
+      }
+    }
+  });
+}
+
 async function setMovieImgs(oscar) {
   const imgs = document.querySelectorAll("img");
   const nominees = Object.values(oscar);
 
-  for (let i = 0; i < imgs.length; i++) {
+  for (let i = imgs.length - 1; i >= 0; i--) {
     imgs[i].alt = nominees[i];
-    imgs[i].src = await getOscarImg(nominees[i]);
+
+    try {
+      imgs[i].src = await getMovieImg(nominees[i]);
+    } catch (err) {
+      try {
+        imgs[i].src = await getActorImg(nominees[i]);
+      } catch (err) {
+        console.error(err);
+      }
+    }
   }
 }

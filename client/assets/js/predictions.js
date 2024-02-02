@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getActorImg, getMovieImg } from "../modules/oscarimg";
+import { getActorImg, getMovieImg } from "../modules/tmdb";
 
 try {
   (async () => {
@@ -19,12 +19,16 @@ try {
 
       for (let nominee of nominees) {
         if (predictions[nominee.name] === nominee.value) {
-          if (nominee.classList.contains("movie")) {
-            const movieImg = await getMovieImg(nominee.value);
-            setImg(nominee, movieImg);
-          } else if (nominee.classList.contains("actor")) {
-            const actorImg = await getActorImg(nominee.value);
-            setImg(nominee, actorImg);
+          try {
+            if (nominee.classList.contains("movie")) {
+              const movieImg = await getMovieImg(nominee.value);
+              setImg(nominee, movieImg);
+            } else if (nominee.classList.contains("actor")) {
+              const actorImg = await getActorImg(nominee.value);
+              setImg(nominee, actorImg);
+            }
+          } catch (err) {
+            console.error(err);
           }
         }
       }
