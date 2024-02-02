@@ -1,3 +1,4 @@
+const OscarWinner = require("../models/OscarModel");
 const Room = require("../models/RoomModel");
 const User = require("../models/UserModel");
 
@@ -21,32 +22,7 @@ async function oscarResult(req, res) {
       roomData.members[member.username] = member.predictions;
     }
 
-    roomData.oscar = {
-      "Melhor documentário curta": "Island In Between",
-      "Melhor curta animado": "Ninety-Five Senses",
-      "Melhor curta": "Red, White and Blue",
-      "Melhores efeitos visuais":
-        "Missão: Impossível - Acerto de Contas Parte Um",
-      "Melhor fotografia": "O Conde",
-      "Melhor edição": "Pobres Criaturas",
-      "Melhor som": "Resistência",
-      "Melhor design de produção": "Assassinos da Lua das Flores",
-      "Melhor maquiagem e penteados": "Oppenheimer",
-      "Melhor design de figurino": "Assassinos da Lua das Flores",
-      "Melhor documentário": "As 4 Filhas de Olfa",
-      "Melhor animação": "Elementos",
-      "Melhor filme internacional": "Perfect Days",
-      "Melhor trilha original": "Assassinos da Lua das Flores",
-      "Melhor canção original": "It Never Went Away - American Symphony",
-      "Melhor roteiro adaptado": "American Fiction",
-      "Melhor roteiro original": "Segredos de um Escândalo",
-      "Melhor atriz coadjuvante": "America Ferrera",
-      "Melhor ator coadjuvante": "Ryan Gosling",
-      "Melhor atriz": "Carey Mulligan",
-      "Melhor ator": "Colman Domingo",
-      "Melhor diretor": "Yorgos Lanthimos",
-      "Melhor filme": "Barbie",
-    };
+    roomData.oscar = await OscarWinner.results();
   } catch (err) {
     console.error(err);
     return res.status(404);

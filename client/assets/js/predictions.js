@@ -3,6 +3,8 @@ import { getActorImg, getMovieImg } from "../modules/tmdb";
 
 try {
   (async () => {
+    if (!document.querySelector(".predictions-form")) return;
+    
     const predictions = (await axios.get("/api/predictions")).data;
 
     if (predictions) {

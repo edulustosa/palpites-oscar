@@ -1,3 +1,4 @@
+const OscarWinner = require("../models/OscarModel");
 const Room = require("../models/RoomModel");
 const User = require("../models/UserModel");
 
@@ -63,32 +64,6 @@ async function enter(req, res) {
 
   const userId = req.session.user._id;
   const membersPredictions = {};
-  const oscarResult = {
-    "Melhor documentário curta": "Island In Between",
-    "Melhor curta animado": "Ninety-Five Senses",
-    "Melhor curta": "Red, White and Blue",
-    "Melhores efeitos visuais":
-      "Missão: Impossível - Acerto de Contas Parte Um",
-    "Melhor fotografia": "O Conde",
-    "Melhor edição": "Pobres Criaturas",
-    "Melhor som": "Resistência",
-    "Melhor design de produção": "Assassinos da Lua das Flores",
-    "Melhor maquiagem e penteados": "Oppenheimer",
-    "Melhor design de figurino": "Assassinos da Lua das Flores",
-    "Melhor documentário": "As 4 Filhas de Olfa",
-    "Melhor animação": "Elementos",
-    "Melhor filme internacional": "Perfect Days",
-    "Melhor trilha original": "Assassinos da Lua das Flores",
-    "Melhor canção original": "It Never Went Away - American Symphony",
-    "Melhor roteiro adaptado": "American Fiction",
-    "Melhor roteiro original": "Segredos de um Escândalo",
-    "Melhor atriz coadjuvante": "America Ferrera",
-    "Melhor ator coadjuvante": "Ryan Gosling",
-    "Melhor atriz": "Carey Mulligan",
-    "Melhor ator": "Colman Domingo",
-    "Melhor diretor": "Yorgos Lanthimos",
-    "Melhor filme": "Barbie",
-  };
 
   try {
     let room = await Room.get(roomId);
@@ -105,7 +80,10 @@ async function enter(req, res) {
         membersPredictions[member.username] = member.predictions;
       }
 
-      req.session.save();
+      const oscarResult = await OscarWinner.results();
+      req.session.save(() =>
+        res.render("room", { membersPredictions, oscarResult })
+      );
     } else {
       req.flash("error", "Sala não existe");
       return req.session.save(() => res.redirect("/salas"));
@@ -115,8 +93,6 @@ async function enter(req, res) {
     req.flash("error", "Não foi possível entrar na sala");
     return req.session.save(() => res.redirect("/salas"));
   }
-
-  res.render("room", { membersPredictions, oscarResult });
 }
 
 async function remove(req, res) {

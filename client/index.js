@@ -6,6 +6,7 @@ import "./assets/js/form";
 import "./assets/js/predictions";
 import "./assets/js/rooms";
 import "./assets/js/room";
+import "./assets/js/oscar";
 
 try {
   const detailsBtn = document.querySelector(".details-btn");
