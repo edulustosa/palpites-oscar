@@ -1,4 +1,4 @@
-import { removeInputErr, setInputErr } from "../modules/error";
+import { removeInputError, setInputError } from "../modules/form";
 
 try {
   const participatingTab = document.querySelector(".participating-rooms-tab");
@@ -31,14 +31,14 @@ try {
     let validForm = true;
 
     const roomName = document.querySelector("#room-name");
-    removeInputErr(roomName);
+    removeInputError(roomName);
 
     if (!roomName.value) {
       validForm = false;
-      setInputErr(roomName, "Nome requerido");
+      setInputError(roomName, "Nome requerido");
     } else if (roomName.value < 3 || roomName.value > 25) {
       validForm = false;
-      setInputErr(roomName, "Nome da sala precisa ter entre 3 a 25 caracteres");
+      setInputError(roomName, "Nome da sala precisa ter entre 3 a 25 caracteres");
     }
 
     if (!validForm) e.preventDefault();
@@ -48,11 +48,11 @@ try {
     let validForm = true;
 
     const roomURL = document.querySelector("#room-url");
-    removeInputErr(roomURL);
+    removeInputError(roomURL);
 
     if (!roomURL.value) {
       validForm = false;
-      setInputErr(roomURL, "URL requerida");
+      setInputError(roomURL, "URL requerida");
     }
 
     if (!validForm) e.preventDefault();
@@ -85,14 +85,14 @@ try {
 
   document.querySelector(".enter-room").addEventListener("submit", (e) => {
     e.preventDefault();
-    const url = document.querySelector("#room-url")
+    const url = document.querySelector("#room-url");
 
-    removeInputErr(url);
+    removeInputError(url);
 
     if (url.value.startsWith("http://localhost:5000")) {
       window.location.replace(url.value);
     } else {
-      setInputErr(url, "URL inválida");
+      setInputError(url, "URL inválida");
     }
   });
 } catch (err) {

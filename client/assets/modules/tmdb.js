@@ -22,7 +22,7 @@ export async function getActorImg(actor) {
   const url = `https://api.themoviedb.org/3/search/person?query=${encodeURIComponent(
     actor
   )}&language=en-US&page=1`;
-  
+
   const response = await axios.get(url, options);
   return `https://image.tmdb.org/t/p/original/${response.data.results[0].profile_path}`;
 }

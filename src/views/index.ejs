@@ -1,22 +1,22 @@
 <%- include("includes/head") %>
 
-<body>
+<body class="vh-100 d-grid grid-center">
   <%- include("includes/flash") %>
-  
-  <main class="main-content">
-    <div class="main-title d-flex">
+
+  <main class="index-container d-flex flex-column align-items-center gap-5 m-3">
+    <div class="d-flex">
       <div class="oscar-statue"></div>
-      <h1>
+      <h1 class="main-title fw-bolder">
         Palpites <br />
         Oscar
       </h1>
       <div class="oscar-statue"></div>
     </div>
 
-    <div class="description">
+    <div class="w-100">
       <p class="d-inline-flex gap-1">
         <a
-          class="btn d-inline-flex align-items-center details-btn"
+          class="btn d-inline-flex align-items-center details-btn mobile-font"
           data-bs-toggle="collapse"
           href="#details"
           role="button"
@@ -29,7 +29,7 @@
       </p>
 
       <div class="collapse" id="details">
-        <div class="card card-body">
+        <div class="card card-body mobile-font">
           Primeiro, você faz suas apostas para os vencedores do Oscar. Em
           seguida, crie ou entre em uma sala onde você e seus amigos poderão
           acompanhar os resultados em tempo real. Compartilhe o convite da sala
@@ -40,7 +40,11 @@
       </div>
     </div>
 
-    <a href="/salas" class="btn btn-secondary play-btn">Jogar</a>
+    <a
+      href="/salas"
+      class="btn btn-secondary play-btn d-grid grid-center mobile-font"
+      >Jogar</a
+    >
   </main>
 
 <%- include("includes/footer") %>

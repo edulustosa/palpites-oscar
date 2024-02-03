@@ -2,13 +2,15 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "./assets/css/style.css";
 
-import "./assets/js/form";
+import "./assets/js/user";
 import "./assets/js/predictions";
 import "./assets/js/rooms";
 import "./assets/js/room";
 import "./assets/js/oscar";
 
-try {
+(() => {
+  if (!document.querySelector(".index-container")) return;
+
   const detailsBtn = document.querySelector(".details-btn");
 
   detailsBtn.addEventListener("click", () => {
@@ -18,6 +20,4 @@ try {
       arrow.innerHTML = "arrow_drop_down";
     } else arrow.innerHTML = "arrow_drop_up";
   });
-} catch (e) {
-  console.error(e);
-}
+})();

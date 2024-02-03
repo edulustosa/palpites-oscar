@@ -11,15 +11,16 @@ async function set(req, res) {
     return req.session.save(() => res.redirect("/salas"));
   }
 
+  const predictions = req.body;
+  const userId = req.session.user._id;
+
+  delete predictions._csrf;
+
   try {
-    const predictions = req.body;
-    const id = req.session.user._id;
+    const user = await User.predictions(userId, predictions);
 
-    delete predictions._csrf;
-
-    const user = await User.predictions(id, predictions);
     if (user) {
-      req.session.user.predictions = user.predictions;
+      req.session.user = user;
       return req.session.save(() => res.redirect("/salas"));
     } else {
       req.flash("error", "Categorias faltando");

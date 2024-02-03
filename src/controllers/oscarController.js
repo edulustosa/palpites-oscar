@@ -31,10 +31,17 @@ async function newWinner(req, res) {
   }
 
   delete req.body._csrf;
-  const winner = new OscarWinner(req.body);
 
   try {
+    const results = await OscarWinner.results();
+    
+    for (let category in req.body) {
+      if (!results[category]) results[category] = req.body[category];
+    }
+
+    const winner = new OscarWinner(results);
     await winner.save(req.session.user.email);
+
     return res.redirect("/salas");
   } catch (err) {
     console.error(err);

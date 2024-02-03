@@ -15,12 +15,14 @@ async function render(req, res) {
     req.session.user = user;
     req.session.save();
 
-    for (let roomId of roomsIds) {
-      const room = await Room.get(roomId);
-      rooms.participating.push({ id: room._id, name: room.name });
+    if (roomsIds.length > 0) {
+      for (let roomId of roomsIds) {
+        const room = await Room.get(roomId);
+        rooms.participating.push({ id: room._id, name: room.name });
 
-      if (room.admin.equals(userId)) {
-        rooms.admin.push({ id: room._id, name: room.name });
+        if (room.admin.equals(userId)) {
+          rooms.admin.push({ id: room._id, name: room.name });
+        }
       }
     }
   } catch (err) {
@@ -70,7 +72,7 @@ async function enter(req, res) {
 
     if (room) {
       if (!room.members.includes(userId)) {
-        req.session.room = await Room.addMember(roomId, userId);
+        await Room.addMember(roomId, userId);
         req.session.user = await User.addRoom(userId, roomId);
         room = await Room.get(roomId);
       }
@@ -81,7 +83,7 @@ async function enter(req, res) {
       }
 
       const oscarResult = await OscarWinner.results();
-      req.session.save(() =>
+      return req.session.save(() =>
         res.render("room", { membersPredictions, oscarResult })
       );
     } else {

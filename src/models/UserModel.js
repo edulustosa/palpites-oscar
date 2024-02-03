@@ -82,22 +82,20 @@ class User {
   }
 
   static async exists(email) {
-    const user = await UserModel.findOne({ email }); 
+    const user = await UserModel.findOne({ email });
     return !!user;
   }
 
-  static async predictions(id, predictions) {
+  static async predictions(userId, predictions) {
     if (Object.keys(predictions).length !== 23) return null;
 
-    const user = await UserModel.findByIdAndUpdate(
-      id,
+    return await UserModel.findByIdAndUpdate(
+      userId,
       {
         $set: { predictions },
       },
       { new: true }
     );
-
-    return user;
   }
 
   static async get(userId) {

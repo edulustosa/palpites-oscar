@@ -1,2 +1,1 @@
-# palpites-oscar
- 
+# Palpites Oscar

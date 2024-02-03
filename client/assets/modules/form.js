@@ -1,4 +1,4 @@
-export function setInputErr(input, msg) {
+export function setInputError(input, msg) {
   const errMsg = document.createElement("p");
   errMsg.classList.add("invalid-feedback");
   errMsg.innerText = msg;
@@ -7,10 +7,20 @@ export function setInputErr(input, msg) {
   input.insertAdjacentElement("afterend", errMsg);
 }
 
-export function removeInputErr(input) {
+export function removeInputError(input) {
   if (input.classList.contains("is-invalid")) {
     input.classList.remove("is-invalid");
     const errMsg = input.nextElementSibling;
     errMsg.remove();
   }
+}
+
+export function resetInputErrors(inputs) {
+  inputs.forEach((input) => removeInputError(input));
+}
+
+export function clearInputErrors(inputs) {
+  inputs.forEach((input) => {
+    input.addEventListener("input", () => removeInputError(input));
+  });
 }

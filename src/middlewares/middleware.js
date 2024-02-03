@@ -4,6 +4,10 @@ function global(req, res, next) {
   next();
 }
 
+function notFoundHandler(_req, res) {
+  res.status(404).render("404");
+}
+
 function loginRequired(req, res, next) {
   if (!req.session.user) res.redirect("/cadastro");
   else next();
@@ -26,6 +30,7 @@ function checkCsrfError(err, req, res, next) {
 
 module.exports = {
   global,
+  notFoundHandler,
   loginRequired,
   predictionsRequired,
   csrf,

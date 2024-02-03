@@ -1,15 +1,15 @@
 <%- include("includes/head") %>
 
-<body class="predictions p-4">
+<body class="p-4">
   <div class="fixed-alert"></div>
 
   <% if (predictions) { %>
     <%- include("includes/nav") %>
   <% } %>
 
-  <%- include("includes/flash") %>
+  <%-include("includes/flash") %>
 
-  <main>
+  <main class="predictions-container">
     <div class="mb-5">
       <% if (predictions) { %>
         <h1 class="fw-bold">Suas previsões</h1>

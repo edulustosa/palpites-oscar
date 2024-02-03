@@ -1,89 +1,53 @@
 @charset "UTF-8";
 
-:root {
-  --primary: #212529;
-  --secondary: #2d3339;
-  --terciary: #363d45;
-}
-
 * {
   font-family: "Poppins", sans-serif;
 }
 
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.grid-center {
+  place-content: center;
 }
 
-.main-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  width: 34rem;
+.index-container {
+  width: 30rem;
 }
 
 .oscar-statue {
-  background: url("../images/oscar-512.png") center center no-repeat;
-  background-size: contain;
+  background: url("../images/oscar-512.png") center / contain no-repeat;
   width: 10rem;
 }
 
-.main-title h1 {
-  font-weight: bolder;
+.oscar-statue-sm {
+  background: url("../images/oscar-512.png") center / contain no-repeat;
+  height: 4rem;
+  width: 4rem;
+}
+
+.main-title {
   font-size: 4rem;
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.play-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 45px;
-  width: 125px;
-  box-shadow: -4px 9px 0px 0px #161616;
-}
-
-.play-btn:active {
-  box-shadow: none;
 }
 
 .details-btn:active {
   border: none;
 }
 
-.login-layout {
-  background-color: var(--secondary);
-  border-radius: 15px;
-  width: 400px;
+.play-btn {
+  height: 45px;
+  width: 125px;
+  box-shadow: -5px 10px 0px 0px #161616;
 }
 
-.oscar-statue-sm {
-  background: url("../images/oscar-512.png") center center no-repeat;
-  background-size: contain;
-  height: 4rem;
-  width: 4rem;
+.play-btn:active {
+  box-shadow: none;
+}
+
+.form-container {
+  background-color: #2d3339;
+  width: 380px;
 }
 
 .invalid-feedback {
   font-size: 12px;
-}
-
-.predictions {
-  height: 100%;
-  display: block;
-}
-
-.oscar-img {
-  height: 15rem;
 }
 
 .fixed-alert {
@@ -91,8 +55,12 @@ body {
   right: 2%;
 }
 
+.oscar-img {
+  height: 15rem;
+}
+
 .rooms-container {
-  background-color: var(--secondary);
+  background-color: #2d3339;
   height: 25rem;
   width: 45rem;
   border-radius: 15px;
@@ -149,8 +117,7 @@ body {
 
 .nothing {
   background: url("https://www.pngkey.com/png/full/163-1639407_view-samegoogleiqdbsaucenao-1391950301682-don-t-know-meme-drawing.png")
-    center center no-repeat;
-  background-size: contain;
+    center / contain no-repeat;
   height: 15rem;
   width: 15rem;
 }
@@ -160,18 +127,16 @@ body {
     font-size: 10px;
   }
 
-  .description,
-  .play-btn,
-  .details-btn,
-  .predictions {
+  .mobile-font {
     font-size: 14px;
   }
 
-  .login-layout {
+  .form-container {
     width: 80%;
   }
 
-  .oscar-img {
-    height: 23rem;
+  .mobile-input {
+    height: 30px;
+    font-size: 12px;
   }
 }

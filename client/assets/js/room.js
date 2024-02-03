@@ -22,9 +22,11 @@ function getResult(members, oscar) {
 
   for (let category in oscar) {
     for (let member in members) {
-      if (oscar[category] === members[member][category]) {
-        result[member] = (result[member] || 0) + 1;
-      }
+      if (member in result) {
+        if (oscar[category] === members[member][category]) {
+          result[member] += 1;
+        }
+      } else result[member] = 0;
     }
   }
 

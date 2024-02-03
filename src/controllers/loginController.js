@@ -1,11 +1,11 @@
 const User = require("../models/UserModel");
 
-function loginRender(req, res) {
+function render(req, res) {
   if (req.session.user) res.redirect("/salas");
   else res.render("login");
 }
 
-async function login(req, res) {
+async function submit(req, res) {
   const user = new User(req.body);
 
   try {
@@ -30,4 +30,4 @@ function logout(req, res) {
   res.redirect("/");
 }
 
-module.exports = { loginRender, login, logout };
+module.exports = { render, submit, logout };

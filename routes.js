@@ -4,15 +4,8 @@ const {
   predictionsRequired,
 } = require("./src/middlewares/middleware");
 
-const {
-  registerRender,
-  register,
-} = require("./src/controllers/registerController");
-const {
-  loginRender,
-  login,
-  logout,
-} = require("./src/controllers/loginController");
+const register = require("./src/controllers/registerController");
+const login = require("./src/controllers/loginController");
 
 const predictions = require("./src/controllers/predictionsController");
 const api = require("./src/apis/api");
@@ -24,13 +17,12 @@ const routes = Router();
 
 routes.get("/", (_req, res) => res.render("index"));
 
-routes.get("/cadastro", registerRender);
-routes.post("/cadastro", register);
+routes.get("/cadastro", register.render);
+routes.post("/cadastro", register.submit);
 
-routes.get("/login", loginRender);
-routes.post("/login", login);
-
-routes.get("/logout", logout);
+routes.get("/login", login.render);
+routes.post("/login", login.submit);
+routes.get("/logout", login.logout);
 
 routes.get("/previsoes", loginRequired, predictions.render);
 routes.get("/api/predictions", loginRequired, api.predictions);
