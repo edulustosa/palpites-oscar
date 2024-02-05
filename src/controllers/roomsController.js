@@ -1,9 +1,8 @@
-const OscarWinner = require("../models/OscarModel");
+const Oscar = require("../models/OscarModel");
 const Room = require("../models/RoomModel");
 const User = require("../models/UserModel");
 
 async function render(req, res) {
-  const roomsIds = req.session.user.rooms;
   const userId = req.session.user._id;
   const rooms = {
     participating: [],
@@ -14,6 +13,8 @@ async function render(req, res) {
     const user = await User.get(userId);
     req.session.user = user;
     req.session.save();
+
+    const roomsIds = req.session.user.rooms;
 
     if (roomsIds.length > 0) {
       for (let roomId of roomsIds) {
@@ -26,7 +27,9 @@ async function render(req, res) {
       }
     }
   } catch (err) {
+    console.error(err);
     req.flash("error", "Não foi possível carregar salas");
+    req.session.save(() => res.redirect("back"));
   }
 
   res.render("rooms", { rooms });
@@ -46,9 +49,7 @@ async function create(req, res) {
       req.session.user = await User.addRoom(adminId, room.info._id);
 
       req.flash("success", "Sala criada");
-      return req.session.save(() =>
-        res.redirect(`/salas/entrar/${room.info._id}`)
-      );
+      return req.session.save(() => res.redirect("back"));
     } else {
       req.flash("error", room.error);
       return req.session.save(() => res.redirect("back"));
@@ -72,9 +73,8 @@ async function enter(req, res) {
 
     if (room) {
       if (!room.members.includes(userId)) {
-        await Room.addMember(roomId, userId);
+        room = await Room.addMember(roomId, userId);
         req.session.user = await User.addRoom(userId, roomId);
-        room = await Room.get(roomId);
       }
 
       for (let memberId of room.members) {
@@ -82,7 +82,7 @@ async function enter(req, res) {
         membersPredictions[member.username] = member.predictions;
       }
 
-      const oscarResult = await OscarWinner.results();
+      const oscarResult = await Oscar.results();
       return req.session.save(() =>
         res.render("room", { membersPredictions, oscarResult })
       );
@@ -103,6 +103,7 @@ async function remove(req, res) {
 
   try {
     const room = await Room.get(roomId);
+
     if (!room.admin.equals(userId)) {
       req.flash("error", "Você não é admin dessa sala");
       return req.session.save(() => res.redirect("back"));
@@ -115,6 +116,8 @@ async function remove(req, res) {
     }
 
     await Room.delete(roomId);
+
+    req.flash("success", "Sala excluída");
     return req.session.save(() => res.redirect("back"));
   } catch (err) {
     console.error(err);

@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./client/index.js",
   output: {
     path: path.resolve(__dirname, "public", "assets", "js"),
@@ -23,5 +23,4 @@ module.exports = {
       },
     ],
   },
-  devtool: "source-map",
 };

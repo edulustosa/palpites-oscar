@@ -11,7 +11,7 @@ const predictions = require("./src/controllers/predictionsController");
 const api = require("./src/apis/api");
 
 const rooms = require("./src/controllers/roomsController");
-const control = require("./src/controllers/oscarController")  ;
+const oscar = require("./src/controllers/oscarController");
 
 const routes = Router();
 
@@ -30,13 +30,28 @@ routes.post("/previsoes", loginRequired, predictions.set);
 
 routes.get("/salas", loginRequired, predictionsRequired, rooms.render);
 routes.post("/salas/criar", loginRequired, predictionsRequired, rooms.create);
-routes.get("/salas/excluir/:id", loginRequired, predictionsRequired, rooms.remove);
+routes.get(
+  "/salas/excluir/:id",
+  loginRequired,
+  predictionsRequired,
+  rooms.remove
+);
 
-routes.get("/api/oscar-result", loginRequired, predictionsRequired, api.oscarResult);
-routes.get("/salas/entrar/:id", loginRequired, predictionsRequired, rooms.enter);
+routes.get(
+  "/api/oscar-result",
+  loginRequired,
+  predictionsRequired,
+  api.oscarResult
+);
+routes.get(
+  "/salas/entrar/:id",
+  loginRequired,
+  predictionsRequired,
+  rooms.enter
+);
 
-routes.get("/control", loginRequired, control.renderLogin);
-routes.post("/control/login", loginRequired, control.login);
-routes.post("/control", loginRequired, control.newWinner);
+routes.get("/control", loginRequired, oscar.render);
+routes.post("/control/login", loginRequired, oscar.login);
+routes.post("/control", loginRequired, oscar.newWinner);
 
 module.exports = routes;

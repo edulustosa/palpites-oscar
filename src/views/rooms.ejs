@@ -1,16 +1,18 @@
 <%- include("includes/head") %>
 
-<body>
+<body
+  class="vh-100 d-flex flex-column justify-content-center align-items-center"
+>
   <%- include("includes/nav") %> <%- include("includes/flash") %>
 
   <div class="oscar-statue-sm"></div>
-  <main class="rooms-container">
+  <main class="rooms-container rounded-4 shadow-lg p-3">
     <section>
       <form action="/salas/criar" method="POST" class="create-room">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
         <div class="mb-3">
-          <label for="room-name" class="form-label fw-bold fs-5"
+          <label for="room-name" class="form-label fs-5 fw-bold"
             >Criar sala</label
           >
           <input
@@ -28,7 +30,7 @@
     </section>
 
     <section>
-      <h1 class="fw-bold fs-4">Salas</h1>
+      <h1 class="fs-4 fw-bold">Salas</h1>
 
       <ul class="nav nav-underline mb-3">
         <li class="nav-item">
@@ -40,63 +42,73 @@
         </li>
       </ul>
 
-      <div class="ovf mb-1">
+      <div class="rooms overflow-auto mb-1">
         <ul class="list-group participating-rooms">
-          <% for (let room of rooms.participating) { %>
-            <li
-              class="list-group-item d-flex align-items-center justify-content-between gap-2"
-            >
-              <small class="mr-2"><%= room.name %></small>
-              <div class="d-flex gap-1">
-                <a
-                  role="button"
-                  href="/salas/entrar/<%= room.id %>"
-                  class="btn btn-secondary btn-sm d-grid place-items-center"
-                  ><span class="material-symbols-outlined room-arrow">
-                    arrow_right_alt
-                  </span></a
-                >
-              </div>
-            </li>
+          <% if (rooms.participating.length > 0) { %> 
+            <% for (let room of rooms.participating) { %>
+              <li
+                class="list-group-item d-flex align-items-center justify-content-between gap-2"
+              >
+                <small class="mr-2"><%= room.name %></small>
+                <div class="d-flex gap-1">
+                  <a
+                    role="button"
+                    href="/salas/entrar/<%= room.id %>"
+                    class="btn btn-secondary btn-sm d-grid"
+                    ><span class="material-symbols-outlined room-icon">
+                      arrow_right_alt
+                    </span></a
+                  >
+                </div>
+              </li>
+            <% } %> 
+          <% } else { %>
+            <div class="nothing-sm"></div>
+            <p>Crie ou entre em uma sala</p>
           <% } %>
         </ul>
 
         <ul class="list-group admin-rooms d-none">
-          <% for (let room of rooms.admin) { %>
-            <li
-              class="list-group-item d-flex align-items-center justify-content-between gap-2"
-            >
-              <small class="mr-2"><%= room.name %></small>
-              <div class="d-flex gap-1">
-                <button
-                  role="button"
-                  class="btn btn-dark btn-sm d-grid place-items-center"
-                  value="http://localhost:5000/salas/entrar/<%= room.id %>"
-                >
-                  <span class="material-symbols-outlined room-arrow">
-                    content_copy
-                  </span>
-                </button>
+          <% if (rooms.admin.length > 0) { %> 
+            <% for (let room of rooms.admin) { %>
+              <li
+                class="list-group-item d-flex align-items-center justify-content-between gap-2"
+              >
+                <small class="mr-2"><%= room.name %></small>
+                <div class="d-flex gap-1">
+                  <button
+                    role="button"
+                    class="btn btn-dark btn-sm d-grid place-items-center"
+                    value="http://localhost:5000/salas/entrar/<%= room.id %>"
+                  >
+                    <span class="material-symbols-outlined room-icon">
+                      content_copy
+                    </span>
+                  </button>
 
-                <a
-                  role="button"
-                  href="/salas/entrar/<%= room.id %>"
-                  class="btn btn-secondary btn-sm d-grid place-items-center"
-                  ><span class="material-symbols-outlined room-arrow">
-                    arrow_right_alt
-                  </span></a
-                >
+                  <a
+                    role="button"
+                    href="/salas/entrar/<%= room.id %>"
+                    class="btn btn-secondary btn-sm d-grid place-items-center"
+                    ><span class="material-symbols-outlined room-icon">
+                      arrow_right_alt
+                    </span></a
+                  >
 
-                <a
-                  role="button"
-                  href="/salas/excluir/<%= room.id %>"
-                  class="btn btn-danger btn-sm d-grid place-items-center"
-                  ><span class="material-symbols-outlined room-arrow">
-                    delete_forever
-                  </span></a
-                >
-              </div>
-            </li>
+                  <a
+                    role="button"
+                    href="/salas/excluir/<%= room.id %>"
+                    class="btn btn-danger btn-sm d-grid place-items-center"
+                    ><span class="material-symbols-outlined room-icon">
+                      delete_forever
+                    </span></a
+                  >
+                </div>
+              </li>
+            <% } %> 
+          <% } else { %>
+            <div class="nothing-sm"></div>
+            <p>Crie ou entre em uma sala</p>
           <% } %>
         </ul>
       </div>
@@ -113,6 +125,7 @@
             placeholder="URL da sala"
             autocomplete="off"
           />
+
           <button type="submit" class="btn btn-primary btn-sm">Entrar</button>
         </div>
       </form>

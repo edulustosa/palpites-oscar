@@ -13,7 +13,7 @@ const OscarSchema = new Schema(
 
 const OscarModel = model("oscar", OscarSchema);
 
-class OscarWinner {
+class Oscar {
   constructor(winners) {
     this.winners = winners;
   }
@@ -28,7 +28,7 @@ class OscarWinner {
 
   static async results() {
     const { results } = await OscarModel.findById(process.env.OSCARID);
-    return results || {};
+    return results;
   }
 
   static async login(email, password) {
@@ -44,4 +44,4 @@ class OscarWinner {
   }
 }
 
-module.exports = OscarWinner;
+module.exports = Oscar;

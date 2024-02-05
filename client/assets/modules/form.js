@@ -7,7 +7,7 @@ export function setInputError(input, msg) {
   input.insertAdjacentElement("afterend", errMsg);
 }
 
-export function removeInputError(input) {
+function removeInputError(input) {
   if (input.classList.contains("is-invalid")) {
     input.classList.remove("is-invalid");
     const errMsg = input.nextElementSibling;

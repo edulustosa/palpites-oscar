@@ -2,10 +2,12 @@ import axios from "axios";
 import { getActorImg, getMovieImg } from "../modules/tmdb";
 
 (async () => {
+  if (!document.querySelector(".room-container")) return;
+
   try {
     const roomData = (await axios.get("/api/oscar-result")).data;
 
-    if (roomData.oscar) {
+    if (Object.keys(roomData.oscar).length > 0) {
       const result = getResult(roomData.members, roomData.oscar);
       setRanking(result);
 

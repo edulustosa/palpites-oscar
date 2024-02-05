@@ -1,6 +1,75 @@
-import { removeInputError, setInputError } from "../modules/form";
+import { setInputError, clearInputErrors } from "../modules/form";
 
-try {
+(() => {
+  if (!document.querySelector(".rooms-container")) return;
+
+  toogleRoomsTabs();
+
+  const inputs = document.querySelectorAll("input");
+  clearInputErrors(inputs);
+
+  createRoom();
+  enterRoom();
+
+  setCopyRoomURL();
+})();
+
+function createRoom() {
+  document.querySelector(".create-room").addEventListener("submit", (e) => {
+    let validForm = true;
+    const roomName = document.querySelector("#room-name");
+
+    if (!roomName.value) {
+      validForm = false;
+      setInputError(roomName, "Nome requerido");
+    } else if (roomName.value < 3 || roomName.value > 25) {
+      validForm = false;
+      setInputError(
+        roomName,
+        "Nome da sala precisa ter entre 3 a 25 caracteres"
+      );
+    }
+
+    if (!validForm) e.preventDefault();
+  });
+}
+
+function enterRoom() {
+  document.querySelector(".enter-room").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const url = document.querySelector("#room-url");
+
+    if (url.value.startsWith("http://localhost:3000")) {
+      window.location.replace(url.value);
+    } else setInputError(url, "URL inválida");
+  });
+}
+
+function setCopyRoomURL() {
+  const copyBtn = document.querySelector(".btn-dark");
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener("click", () => copyToClipboard(copyBtn));
+}
+
+function copyToClipboard(btn) {
+  btn.querySelector("span").innerHTML = "done";
+
+  const copy = btn.value;
+
+  const textarea = document.createElement("textarea");
+  textarea.value = copy;
+  document.body.appendChild(textarea);
+
+  textarea.select();
+  textarea.setSelectionRange(0, 99999);
+
+  navigator.clipboard.writeText(textarea.value);
+
+  document.body.removeChild(textarea);
+}
+
+function toogleRoomsTabs() {
   const participatingTab = document.querySelector(".participating-rooms-tab");
   const adminTab = document.querySelector(".admin-rooms-tab");
 
@@ -26,75 +95,4 @@ try {
       participatingList.classList.add("d-none");
     }
   });
-
-  document.querySelector(".create-room").addEventListener("submit", (e) => {
-    let validForm = true;
-
-    const roomName = document.querySelector("#room-name");
-    removeInputError(roomName);
-
-    if (!roomName.value) {
-      validForm = false;
-      setInputError(roomName, "Nome requerido");
-    } else if (roomName.value < 3 || roomName.value > 25) {
-      validForm = false;
-      setInputError(roomName, "Nome da sala precisa ter entre 3 a 25 caracteres");
-    }
-
-    if (!validForm) e.preventDefault();
-  });
-
-  document.querySelector(".enter-room").addEventListener("submit", (e) => {
-    let validForm = true;
-
-    const roomURL = document.querySelector("#room-url");
-    removeInputError(roomURL);
-
-    if (!roomURL.value) {
-      validForm = false;
-      setInputError(roomURL, "URL requerida");
-    }
-
-    if (!validForm) e.preventDefault();
-  });
-
-  document.addEventListener("click", (e) => {
-    const btn = e.target;
-
-    if (btn.classList.contains("btn-dark")) {
-      copyToClipboard(btn);
-    }
-  });
-
-  function copyToClipboard(btn) {
-    btn.querySelector("span").innerHTML = "done";
-
-    const copy = btn.value;
-
-    const textarea = document.createElement("textarea");
-    textarea.value = copy;
-    document.body.appendChild(textarea);
-
-    textarea.select();
-    textarea.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(textarea.value);
-
-    document.body.removeChild(textarea);
-  }
-
-  document.querySelector(".enter-room").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const url = document.querySelector("#room-url");
-
-    removeInputError(url);
-
-    if (url.value.startsWith("http://localhost:5000")) {
-      window.location.replace(url.value);
-    } else {
-      setInputError(url, "URL inválida");
-    }
-  });
-} catch (err) {
-  console.error(err);
 }

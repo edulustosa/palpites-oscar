@@ -60,22 +60,20 @@
 }
 
 .rooms-container {
-  background-color: #2d3339;
-  height: 25rem;
-  width: 45rem;
-  border-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   place-items: center;
+  height: 25rem;
+  width: 45rem;
+  background-color: #2d3339;
 }
 
-.room-arrow {
+.room-icon {
   font-size: 16px;
 }
 
-.ovf {
+.rooms {
   height: 230px;
-  overflow-y: auto;
 }
 
 .nav-link {
@@ -110,9 +108,13 @@
   width: 20rem;
 }
 
-.ovf-180 {
+.previous-category:active,
+.next-category:active {
+  border: none;
+}
+
+.members-guest {
   height: 180px;
-  overflow-y: auto;
 }
 
 .nothing {
@@ -120,6 +122,13 @@
     center / contain no-repeat;
   height: 15rem;
   width: 15rem;
+}
+
+.nothing-sm {
+  background: url("https://www.pngkey.com/png/full/163-1639407_view-samegoogleiqdbsaucenao-1391950301682-don-t-know-meme-drawing.png")
+    center / contain no-repeat;
+  height: 10rem;
+  width: 10rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -138,5 +147,21 @@
   .mobile-input {
     height: 30px;
     font-size: 12px;
+  }
+
+  .rooms-container {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 2fr;
+    height: auto;
+    width: 90%;
+  }
+
+  .room-container {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .results {
+    width: 25rem;
   }
 }

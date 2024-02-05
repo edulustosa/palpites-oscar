@@ -1,6 +1,6 @@
-const OscarWinner = require("../models/OscarModel");
+const Oscar = require("../models/OscarModel");
 
-function renderLogin(req, res) {
+function render(req, res) {
   const access = req.session.access;
   res.render("oscar", { access });
 }
@@ -9,7 +9,7 @@ async function login(req, res) {
   const { email, password } = req.body;
 
   try {
-    if (await OscarWinner.login(email, password)) {
+    if (await Oscar.login(email, password)) {
       req.session.access = true;
       return req.session.save(() => res.redirect("/control"));
     } else {
@@ -33,13 +33,17 @@ async function newWinner(req, res) {
   delete req.body._csrf;
 
   try {
-    const results = await OscarWinner.results();
-    
+    const results = await Oscar.results();
+
     for (let category in req.body) {
-      if (!results[category]) results[category] = req.body[category];
+      if (!results[category]) {
+        results[category] = req.body[category];
+      } else if (results[category] !== req.body[category]) {
+        results[category] = req.body[category];
+      }
     }
 
-    const winner = new OscarWinner(results);
+    const winner = new Oscar(results);
     await winner.save(req.session.user.email);
 
     return res.redirect("/salas");
@@ -50,4 +54,4 @@ async function newWinner(req, res) {
   }
 }
 
-module.exports = { renderLogin, newWinner, login };
+module.exports = { render, newWinner, login };

@@ -1,9 +1,9 @@
 <%- include("includes/head") %>
 
-<body>
+<body class="vh-100 d-flex justify-content-center align-items-center">
   <%- include("includes/nav") %> <%- include("includes/flash") %>
 
-  <main class="d-flex align-items-center gap-5">
+  <main class="room-container d-flex justify-content-center align-items-center gap-5">
     <% if (Object.keys(oscarResult).length > 0) { %>
       <table class="table caption-top">
         <caption>
@@ -35,15 +35,15 @@
         </button>
 
         <% for (let category in oscarResult) { %>
-          <div class="d-flex align-items-center flex-column d-none category">
+          <div class="d-flex align-items-center flex-column d-none category gap-2">
             <h2 class="fw-bold fs-3"><%= category %></h2>
     
             <img src="" class="img-thumbnail rounded oscar-img mb-3" alt="" />
     
-            <ul class="list-group mb-3 ovf-180">
+            <ul class="members-guest list-group mb-3 overflow-auto">
               <% for (let member in membersPredictions) { %>
                 <li
-                  class="list-group-item d-flex align-items-center gap-2 prediction"
+                  class="list-group-item d-flex align-items-center gap-3 prediction"
                 >
                   <div>
                     <% if (oscarResult[category] === membersPredictions[member][category]) { %>
@@ -85,5 +85,7 @@
       </div>
     <% } %>
   </main>
+
+  <p style="font-size: small;" class="text-body-secondary fixed-bottom m-2">Recarregue a página para atualizar os resultados</p>
 
 <%- include("includes/footer") %>

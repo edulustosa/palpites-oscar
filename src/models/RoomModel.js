@@ -33,7 +33,7 @@ class Room {
   }
 
   static async delete(roomId) {
-    return await RoomModel.findOneAndDelete({ _id: roomId });
+    return await RoomModel.findByIdAndDelete(roomId);
   }
 
   static async addMember(roomId, userId) {

@@ -1,4 +1,4 @@
-const OscarWinner = require("../models/OscarModel");
+const Oscar = require("../models/OscarModel");
 const Room = require("../models/RoomModel");
 const User = require("../models/UserModel");
 
@@ -17,12 +17,14 @@ async function oscarResult(req, res) {
   try {
     const room = await Room.get(roomId);
 
-    for (let memberId of room.members) {
-      const member = await User.get(memberId);
-      roomData.members[member.username] = member.predictions;
-    }
+    if (room) {
+      for (let memberId of room.members) {
+        const member = await User.get(memberId);
+        roomData.members[member.username] = member.predictions;
+      }
 
-    roomData.oscar = await OscarWinner.results();
+      roomData.oscar = await Oscar.results();
+    }
   } catch (err) {
     console.error(err);
     return res.status(404);
