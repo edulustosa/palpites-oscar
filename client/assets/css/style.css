@@ -144,6 +144,16 @@
     width: 80%;
   }
 
+  .form-container h1 {
+    font-size: large !important;
+  }
+
+  .form-container button {
+    height: 35px;
+    width: 80px;
+    font-size: medium;
+  }
+
   .mobile-input {
     height: 30px;
     font-size: 12px;

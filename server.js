@@ -11,10 +11,7 @@ const PORT = process.env.PORT;
 
 moongoose
   .connect(process.env.CONNSTRING)
-  .then(() => {
-    console.log("Database conectada");
-    app.emit("Db connected");
-  })
+  .then(() => app.emit("Db connected"))
   .catch((e) => console.error(e));
 
 app.use(
