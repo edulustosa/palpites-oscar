@@ -39,7 +39,7 @@ function enterRoom() {
     e.preventDefault();
     const url = document.querySelector("#room-url");
 
-    if (url.value.startsWith("http://localhost:3000")) {
+    if (url.value.startsWith("https://palpites-oscar.onrender.com")) {
       window.location.replace(url.value);
     } else setInputError(url, "URL inválida");
   });
